@@ -29,13 +29,15 @@ const defaultOptions = {
   toleranceM: 900,
   maxOrder: 2,
   paddingDeg: 0.25,
-  attempts: 6
+  attempts: 6,
+  curlMaxTimeS: 120,
+  tileSizeDeg: 1
 };
 
 const targets = [
   { name: "Mureș", slug: "mures", label: "Mureș repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 4 } },
   { name: "Olt", slug: "olt", label: "Olt repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 4 } },
-  { name: "Dunărea", slug: "danube", label: "Dunărea repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 4, paddingDeg: 0.1 } },
+  { name: "Dunărea", slug: "danube", label: "Dunărea repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 1, paddingDeg: 0.1, curlMaxTimeS: 600, tileSizeDeg: 1, overpassTimeoutS: 360 } },
   { name: "Argeș", slug: "arges", label: "Argeș repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 4 } },
   { name: "Dâmbovița", slug: "dambovita", label: "Dâmbovița repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 4 } },
   { name: "Thames", slug: "thames", label: "Thames repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 4 } },
@@ -156,8 +158,9 @@ async function loadRiverGeometry(candidate, options = defaultOptions) {
 }
 
 async function loadWaterwaysInBounds(bounds, options = defaultOptions) {
+  const overpassTimeoutS = options.overpassTimeoutS ?? 70;
   const query = `
-    [out:json][timeout:70];
+    [out:json][timeout:${overpassTimeoutS}];
     way["waterway"~"^(river|stream|canal|drain|ditch)$"](${bounds.south},${bounds.west},${bounds.north},${bounds.east});
     out tags geom;
   `;
@@ -168,7 +171,7 @@ async function loadWaterwaysInBounds(bounds, options = defaultOptions) {
 
 async function buildBasinBundle(candidate, mainWaterways, options = defaultOptions) {
   const bounds = expandBounds(boundsForWaterways(mainWaterways), options.paddingDeg);
-  const tiles = splitBounds(bounds, 1);
+  const tiles = splitBounds(bounds, options.tileSizeDeg ?? 1);
   const allWaterways = new Map();
 
   for (const [index, tile] of tiles.entries()) {
@@ -196,6 +199,7 @@ async function buildElevationProfile(mainWaterways) {
 }
 
 async function runOverpass(query, options = defaultOptions) {
+  const maxTime = String(options.curlMaxTimeS ?? 120);
   return retryWithBackoff(async () => {
     const { stdout } = await execFileAsync(
       "curl",
@@ -203,7 +207,7 @@ async function runOverpass(query, options = defaultOptions) {
         "--silent",
         "--show-error",
         "--max-time",
-        "120",
+        maxTime,
         "-X",
         "POST",
         OVERPASS_ENDPOINT,

@@ -142,6 +142,76 @@
       "continent": "Europe"
     },
     {
+      "ref": "relation:2140749",
+      "label": "Magdalena · main",
+      "file": "data/samples/magdalena-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 0,
+      "builtAt": "2026-04-25T18:41:19.774Z",
+      "continent": "South America"
+    },
+    {
+      "ref": "relation:2140749",
+      "label": "Magdalena · order1",
+      "file": "data/samples/magdalena-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 1,
+      "builtAt": "2026-04-25T18:41:19.774Z",
+      "continent": "South America"
+    },
+    {
+      "ref": "relation:2140749",
+      "label": "Magdalena · order2",
+      "file": "data/samples/magdalena-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 2,
+      "builtAt": "2026-04-25T18:41:19.774Z",
+      "continent": "South America"
+    },
+    {
+      "ref": "relation:2140749",
+      "label": "Magdalena · order3",
+      "file": "data/samples/magdalena-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 3,
+      "builtAt": "2026-04-25T18:41:19.774Z",
+      "continent": "South America"
+    },
+    {
+      "ref": "relation:2140749",
+      "label": "Magdalena · order4",
+      "file": "data/samples/magdalena-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 4,
+      "builtAt": "2026-04-25T18:41:19.774Z",
+      "continent": "South America"
+    },
+    {
       "ref": "relation:2146941",
       "label": "Po · main",
       "file": "data/samples/po-main.json",
@@ -422,6 +492,76 @@
       "continent": "Asia"
     },
     {
+      "ref": "relation:2203587",
+      "label": "Murray · main",
+      "file": "data/samples/murray-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 0,
+      "builtAt": "2026-04-25T18:46:09.220Z",
+      "continent": "Oceania"
+    },
+    {
+      "ref": "relation:2203587",
+      "label": "Murray · order1",
+      "file": "data/samples/murray-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 1,
+      "builtAt": "2026-04-25T18:46:09.220Z",
+      "continent": "Oceania"
+    },
+    {
+      "ref": "relation:2203587",
+      "label": "Murray · order2",
+      "file": "data/samples/murray-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 2,
+      "builtAt": "2026-04-25T18:46:09.220Z",
+      "continent": "Oceania"
+    },
+    {
+      "ref": "relation:2203587",
+      "label": "Murray · order3",
+      "file": "data/samples/murray-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 3,
+      "builtAt": "2026-04-25T18:46:09.220Z",
+      "continent": "Oceania"
+    },
+    {
+      "ref": "relation:2203587",
+      "label": "Murray · order4",
+      "file": "data/samples/murray-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 4,
+      "builtAt": "2026-04-25T18:46:09.220Z",
+      "continent": "Oceania"
+    },
+    {
       "ref": "relation:2263653",
       "label": "Thames · main",
       "file": "data/samples/thames-main.json",
@@ -560,6 +700,76 @@
       "tier": 4,
       "builtAt": "2026-04-25T17:40:26.720Z",
       "continent": "Asia"
+    },
+    {
+      "ref": "relation:318455",
+      "label": "Zambezi · main",
+      "file": "data/samples/zambezi-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 0,
+      "builtAt": "2026-04-25T18:37:38.594Z",
+      "continent": "Africa"
+    },
+    {
+      "ref": "relation:318455",
+      "label": "Zambezi · order1",
+      "file": "data/samples/zambezi-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 1,
+      "builtAt": "2026-04-25T18:37:38.594Z",
+      "continent": "Africa"
+    },
+    {
+      "ref": "relation:318455",
+      "label": "Zambezi · order2",
+      "file": "data/samples/zambezi-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 2,
+      "builtAt": "2026-04-25T18:37:38.594Z",
+      "continent": "Africa"
+    },
+    {
+      "ref": "relation:318455",
+      "label": "Zambezi · order3",
+      "file": "data/samples/zambezi-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 3,
+      "builtAt": "2026-04-25T18:37:38.594Z",
+      "continent": "Africa"
+    },
+    {
+      "ref": "relation:318455",
+      "label": "Zambezi · order4",
+      "file": "data/samples/zambezi-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 4,
+      "builtAt": "2026-04-25T18:37:38.594Z",
+      "continent": "Africa"
     },
     {
       "ref": "relation:34392",

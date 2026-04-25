@@ -62,6 +62,24 @@ const targets = [
     slug: "dambovita",
     label: "Dâmbovița repo sample",
     options: { ...defaultOptions, maxOrder: 4 }
+  },
+  {
+    name: "Thames",
+    slug: "thames",
+    label: "Thames repo sample",
+    options: { ...defaultOptions, maxOrder: 4 }
+  },
+  {
+    name: "Hudson River",
+    slug: "hudson",
+    label: "Hudson River repo sample",
+    options: { ...defaultOptions, maxOrder: 4 }
+  },
+  {
+    name: "Chao Phraya",
+    slug: "chaophraya",
+    label: "Chao Phraya repo sample",
+    options: { ...defaultOptions, maxOrder: 4 }
   }
 ];
 

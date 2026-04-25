@@ -67,6 +67,201 @@
       "builtAt": "2026-04-25T16:54:43.731Z"
     },
     {
+      "ref": "relation:2148192",
+      "label": "Hudson River · main",
+      "file": "data/samples/hudson-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 0,
+      "builtAt": "2026-04-25T17:39:13.582Z"
+    },
+    {
+      "ref": "relation:2148192",
+      "label": "Hudson River · order1",
+      "file": "data/samples/hudson-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 1,
+      "builtAt": "2026-04-25T17:39:13.582Z"
+    },
+    {
+      "ref": "relation:2148192",
+      "label": "Hudson River · order2",
+      "file": "data/samples/hudson-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 2,
+      "builtAt": "2026-04-25T17:39:13.582Z"
+    },
+    {
+      "ref": "relation:2148192",
+      "label": "Hudson River · order3",
+      "file": "data/samples/hudson-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 3,
+      "builtAt": "2026-04-25T17:39:13.582Z"
+    },
+    {
+      "ref": "relation:2148192",
+      "label": "Hudson River · order4",
+      "file": "data/samples/hudson-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 4,
+      "builtAt": "2026-04-25T17:39:13.582Z"
+    },
+    {
+      "ref": "relation:2263653",
+      "label": "Thames · main",
+      "file": "data/samples/thames-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 0,
+      "builtAt": "2026-04-25T17:38:13.475Z"
+    },
+    {
+      "ref": "relation:2263653",
+      "label": "Thames · order1",
+      "file": "data/samples/thames-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 1,
+      "builtAt": "2026-04-25T17:38:13.475Z"
+    },
+    {
+      "ref": "relation:2263653",
+      "label": "Thames · order2",
+      "file": "data/samples/thames-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 2,
+      "builtAt": "2026-04-25T17:38:13.475Z"
+    },
+    {
+      "ref": "relation:2263653",
+      "label": "Thames · order3",
+      "file": "data/samples/thames-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 3,
+      "builtAt": "2026-04-25T17:38:13.475Z"
+    },
+    {
+      "ref": "relation:2263653",
+      "label": "Thames · order4",
+      "file": "data/samples/thames-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 4,
+      "builtAt": "2026-04-25T17:38:13.475Z"
+    },
+    {
+      "ref": "relation:227317",
+      "label": "Chao Phraya · main",
+      "file": "data/samples/chaophraya-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 0,
+      "builtAt": "2026-04-25T17:40:26.720Z"
+    },
+    {
+      "ref": "relation:227317",
+      "label": "Chao Phraya · order1",
+      "file": "data/samples/chaophraya-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 1,
+      "builtAt": "2026-04-25T17:40:26.720Z"
+    },
+    {
+      "ref": "relation:227317",
+      "label": "Chao Phraya · order2",
+      "file": "data/samples/chaophraya-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 2,
+      "builtAt": "2026-04-25T17:40:26.720Z"
+    },
+    {
+      "ref": "relation:227317",
+      "label": "Chao Phraya · order3",
+      "file": "data/samples/chaophraya-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 3,
+      "builtAt": "2026-04-25T17:40:26.720Z"
+    },
+    {
+      "ref": "relation:227317",
+      "label": "Chao Phraya · order4",
+      "file": "data/samples/chaophraya-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 4,
+      "builtAt": "2026-04-25T17:40:26.720Z"
+    },
+    {
       "ref": "relation:5815028",
       "label": "Argeș · main",
       "file": "data/samples/arges-main.json",

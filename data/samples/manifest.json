@@ -2,6 +2,76 @@
   "version": 1,
   "samples": [
     {
+      "ref": "relation:132818",
+      "label": "Loire · main",
+      "file": "data/samples/loire-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 0,
+      "builtAt": "2026-04-25T17:59:08.634Z",
+      "continent": "Europe"
+    },
+    {
+      "ref": "relation:132818",
+      "label": "Loire · order1",
+      "file": "data/samples/loire-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 1,
+      "builtAt": "2026-04-25T17:59:08.634Z",
+      "continent": "Europe"
+    },
+    {
+      "ref": "relation:132818",
+      "label": "Loire · order2",
+      "file": "data/samples/loire-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 2,
+      "builtAt": "2026-04-25T17:59:08.634Z",
+      "continent": "Europe"
+    },
+    {
+      "ref": "relation:132818",
+      "label": "Loire · order3",
+      "file": "data/samples/loire-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 3,
+      "builtAt": "2026-04-25T17:59:08.634Z",
+      "continent": "Europe"
+    },
+    {
+      "ref": "relation:132818",
+      "label": "Loire · order4",
+      "file": "data/samples/loire-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 4,
+      "builtAt": "2026-04-25T17:59:08.634Z",
+      "continent": "Europe"
+    },
+    {
       "ref": "relation:1567969",
       "label": "Olt · main",
       "file": "data/samples/olt-main.json",
@@ -140,6 +210,76 @@
       "tier": 4,
       "builtAt": "2026-04-25T17:39:13.582Z",
       "continent": "North America"
+    },
+    {
+      "ref": "relation:2188548",
+      "label": "Tigris · main",
+      "file": "data/samples/tigris-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 0,
+      "builtAt": "2026-04-25T18:08:11.362Z",
+      "continent": "Asia"
+    },
+    {
+      "ref": "relation:2188548",
+      "label": "Tigris · order1",
+      "file": "data/samples/tigris-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 1,
+      "builtAt": "2026-04-25T18:08:11.362Z",
+      "continent": "Asia"
+    },
+    {
+      "ref": "relation:2188548",
+      "label": "Tigris · order2",
+      "file": "data/samples/tigris-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 2,
+      "builtAt": "2026-04-25T18:08:11.362Z",
+      "continent": "Asia"
+    },
+    {
+      "ref": "relation:2188548",
+      "label": "Tigris · order3",
+      "file": "data/samples/tigris-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 3,
+      "builtAt": "2026-04-25T18:08:11.362Z",
+      "continent": "Asia"
+    },
+    {
+      "ref": "relation:2188548",
+      "label": "Tigris · order4",
+      "file": "data/samples/tigris-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 4,
+      "builtAt": "2026-04-25T18:08:11.362Z",
+      "continent": "Asia"
     },
     {
       "ref": "relation:2263653",
@@ -490,6 +630,76 @@
       "tier": 4,
       "builtAt": "2026-04-25T16:51:40.688Z",
       "continent": "Europe"
+    },
+    {
+      "ref": "way:466629731",
+      "label": "Senegal River · main",
+      "file": "data/samples/senegal-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 0,
+      "builtAt": "2026-04-25T18:01:46.106Z",
+      "continent": "Africa"
+    },
+    {
+      "ref": "way:466629731",
+      "label": "Senegal River · order1",
+      "file": "data/samples/senegal-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 1,
+      "builtAt": "2026-04-25T18:01:46.106Z",
+      "continent": "Africa"
+    },
+    {
+      "ref": "way:466629731",
+      "label": "Senegal River · order2",
+      "file": "data/samples/senegal-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 2,
+      "builtAt": "2026-04-25T18:01:46.106Z",
+      "continent": "Africa"
+    },
+    {
+      "ref": "way:466629731",
+      "label": "Senegal River · order3",
+      "file": "data/samples/senegal-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 3,
+      "builtAt": "2026-04-25T18:01:46.106Z",
+      "continent": "Africa"
+    },
+    {
+      "ref": "way:466629731",
+      "label": "Senegal River · order4",
+      "file": "data/samples/senegal-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 4,
+      "builtAt": "2026-04-25T18:01:46.106Z",
+      "continent": "Africa"
     }
   ]
 }

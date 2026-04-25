@@ -254,6 +254,9 @@ function nearestNodeKey(nodes, targetPoint) {
   return bestKey;
 }
 
+const PATH_VISIT_BUDGET = 200_000;
+const TERMINAL_PAIR_BUDGET = 16;
+
 function findBestSegmentPath(preferredSourceKey, preferredMouthKey, segments, adjacency, nodes) {
   const preferred = longestPathBetween(preferredSourceKey, preferredMouthKey, segments, adjacency);
   if (preferred.indices.length) {
@@ -264,7 +267,12 @@ function findBestSegmentPath(preferredSourceKey, preferredMouthKey, segments, ad
   }
 
   const terminalKeys = Array.from(nodes.keys()).filter((key) => (adjacency.get(key)?.length || 0) <= 1);
-  const candidates = terminalKeys.length >= 2 ? terminalKeys : Array.from(nodes.keys());
+  let candidates = terminalKeys.length >= 2 ? terminalKeys : Array.from(nodes.keys());
+
+  if (candidates.length > TERMINAL_PAIR_BUDGET) {
+    candidates = pickFarthestKeys(candidates, nodes, TERMINAL_PAIR_BUDGET);
+  }
+
   let best = {
     indices: [],
     totalKm: 0,
@@ -289,6 +297,58 @@ function findBestSegmentPath(preferredSourceKey, preferredMouthKey, segments, ad
   return best;
 }
 
+function pickFarthestKeys(keys, nodes, limit) {
+  if (keys.length <= limit) return keys.slice();
+  const points = keys.map((key) => ({ key, point: nodes.get(key) })).filter((entry) => entry.point);
+  if (points.length <= limit) return points.map((entry) => entry.key);
+
+  let bounds = points.reduce(
+    (acc, { point }) => ({
+      south: Math.min(acc.south, point[0]),
+      north: Math.max(acc.north, point[0]),
+      west: Math.min(acc.west, point[1]),
+      east: Math.max(acc.east, point[1])
+    }),
+    { south: Infinity, north: -Infinity, west: Infinity, east: -Infinity }
+  );
+
+  const corners = [
+    [bounds.south, bounds.west],
+    [bounds.north, bounds.east],
+    [bounds.south, bounds.east],
+    [bounds.north, bounds.west]
+  ];
+
+  const picked = new Set();
+  const pickedKeys = [];
+  for (const corner of corners) {
+    let bestKey = null;
+    let bestDistance = Infinity;
+    for (const { key, point } of points) {
+      if (picked.has(key)) continue;
+      const distanceKm = haversineKm(point, corner);
+      if (distanceKm < bestDistance) {
+        bestDistance = distanceKm;
+        bestKey = key;
+      }
+    }
+    if (bestKey) {
+      picked.add(bestKey);
+      pickedKeys.push(bestKey);
+    }
+    if (pickedKeys.length >= limit) break;
+  }
+
+  for (const { key } of points) {
+    if (pickedKeys.length >= limit) break;
+    if (picked.has(key)) continue;
+    picked.add(key);
+    pickedKeys.push(key);
+  }
+
+  return pickedKeys;
+}
+
 function longestPathBetween(sourceKey, targetKey, segments, adjacency) {
   if (!sourceKey || !targetKey) {
     return {
@@ -303,8 +363,12 @@ function longestPathBetween(sourceKey, targetKey, segments, adjacency) {
     indices: [],
     totalKm: 0
   };
+  let visitBudget = PATH_VISIT_BUDGET;
 
   function visit(currentKey, totalKm) {
+    if (visitBudget <= 0) return;
+    visitBudget -= 1;
+
     if (currentKey === targetKey && totalKm >= best.totalKm) {
       best = {
         indices: [...path],
@@ -313,20 +377,22 @@ function longestPathBetween(sourceKey, targetKey, segments, adjacency) {
     }
 
     const connected = adjacency.get(currentKey) || [];
-    connected
+    const ordered = connected
       .slice()
-      .sort((left, right) => segments[right].lengthKm - segments[left].lengthKm)
-      .forEach((segmentIndex) => {
-        if (used.has(segmentIndex)) return;
+      .sort((left, right) => segments[right].lengthKm - segments[left].lengthKm);
 
-        used.add(segmentIndex);
-        path.push(segmentIndex);
-        const segment = segments[segmentIndex];
-        const nextKey = segment.startKey === currentKey ? segment.endKey : segment.startKey;
-        visit(nextKey, totalKm + segment.lengthKm);
-        path.pop();
-        used.delete(segmentIndex);
-      });
+    for (const segmentIndex of ordered) {
+      if (visitBudget <= 0) return;
+      if (used.has(segmentIndex)) continue;
+
+      used.add(segmentIndex);
+      path.push(segmentIndex);
+      const segment = segments[segmentIndex];
+      const nextKey = segment.startKey === currentKey ? segment.endKey : segment.startKey;
+      visit(nextKey, totalKm + segment.lengthKm);
+      path.pop();
+      used.delete(segmentIndex);
+    }
   }
 
   visit(sourceKey, 0);

@@ -581,10 +581,21 @@ async function ensureElevationProfile(ref) {
     renderFocusedRiver();
     return profile;
   } catch (error) {
-    river.elevationError = error.message;
+    river.elevationError = elevationErrorMessage(error);
     renderFocusedRiver();
     return [];
   }
+}
+
+function elevationErrorMessage(error) {
+  const raw = error?.message || "Elevation lookup failed";
+  if (/failed to fetch|networkerror|load failed/i.test(raw)) {
+    return "Elevation service unreachable — try again later.";
+  }
+  if (/429|rate/i.test(raw)) {
+    return "Elevation service rate-limited (1000 requests/day shared).";
+  }
+  return raw;
 }
 
 function detachRiver(ref) {
@@ -661,29 +672,59 @@ function renderSampleList() {
     return;
   }
 
-  els.sampleList.innerHTML = samples
-    .map((entry, index) => {
-      const matchesCurrent =
-        Number(entry.options.maxOrder) === Number(els.upstreamOrder.value) &&
-        Number(entry.options.toleranceM) === Number(els.outletTolerance.value) &&
-        Number(entry.options.paddingDeg) === Number(els.basinPadding.value);
+  const groups = new Map();
+  samples.forEach((entry, index) => {
+    const key = entry.ref || entry.file;
+    if (!groups.has(key)) {
+      groups.set(key, { ref: entry.ref, name: extractRiverName(entry), entries: [] });
+    }
+    groups.get(key).entries.push({ ...entry, index });
+  });
+
+  els.sampleList.innerHTML = Array.from(groups.values())
+    .map((group) => {
+      const sortedEntries = group.entries
+        .slice()
+        .sort((a, b) => (a.tier ?? a.options?.maxOrder ?? 0) - (b.tier ?? b.options?.maxOrder ?? 0));
+
+      const tierButtons = sortedEntries
+        .map((entry) => {
+          const tier = entry.tier ?? entry.options?.maxOrder ?? 0;
+          const matchesCurrent =
+            Number(entry.options.maxOrder) === Number(els.upstreamOrder.value) &&
+            Number(entry.options.toleranceM) === Number(els.outletTolerance.value) &&
+            Number(entry.options.paddingDeg) === Number(els.basinPadding.value);
+          const label = tier === 0 ? "main" : `+order${tier}`;
+          return `
+            <button
+              type="button"
+              class="sample-tier ${matchesCurrent ? "is-current" : ""}"
+              data-sample-index="${entry.index}"
+              title="Load ${escapeHtml(group.name)} (${label})"
+            >${escapeHtml(label)}</button>
+          `;
+        })
+        .join("");
 
       return `
-        <article class="sample-card">
+        <article class="sample-card sample-card--grouped">
           <span>
-            <strong>${escapeHtml(entry.label)}</strong>
-            <small>${escapeHtml(sampleDetail(entry, matchesCurrent))}</small>
+            <strong>${escapeHtml(group.name)}</strong>
+            <small>${group.entries.length} tier${group.entries.length === 1 ? "" : "s"} cached</small>
           </span>
-          <button type="button" data-sample-index="${index}" title="Load ${escapeHtml(entry.label)} sample">
-            <i data-lucide="package-open" aria-hidden="true"></i>
-            <span>Load</span>
-          </button>
+          <div class="sample-tiers">${tierButtons}</div>
         </article>
       `;
     })
     .join("");
 
   renderIcons();
+}
+
+function extractRiverName(entry) {
+  const label = entry.label || "";
+  const stripped = label.replace(/\s*·.*$/, "").replace(/\s+repo sample.*$/i, "").trim();
+  return stripped || entry.ref || "Sample";
 }
 
 function renderCandidates(candidates) {
@@ -970,7 +1011,7 @@ function applyMapSettings() {
 
 function applyUrlOverrides(urlState) {
   if (urlState.basemap) els.basemapSelect.value = urlState.basemap;
-  if (urlState.order) els.upstreamOrder.value = String(urlState.order);
+  if (urlState.order != null && urlState.order !== "") els.upstreamOrder.value = String(urlState.order);
   if (urlState.tolerance) els.outletTolerance.value = String(urlState.tolerance);
   if (urlState.padding) els.basinPadding.value = String(urlState.padding);
   if (typeof urlState.sample === "boolean") els.preferSampleCache.checked = urlState.sample;

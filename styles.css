@@ -269,6 +269,43 @@ h2 {
   align-items: center;
 }
 
+.sample-card--grouped {
+  grid-template-columns: 1fr;
+  align-items: stretch;
+}
+
+.sample-tiers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.sample-tier {
+  flex: 1 1 auto;
+  min-width: 64px;
+  padding: 7px 10px;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: border-color 120ms ease, transform 120ms ease, box-shadow 120ms ease;
+}
+
+.sample-tier:hover {
+  border-color: #8db7d0;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(42, 99, 138, 0.08);
+}
+
+.sample-tier.is-current {
+  color: #ffffff;
+  background: linear-gradient(180deg, #2e7fb8 0%, #1c5b8c 100%);
+  border-color: #1c5b8c;
+}
+
 .candidate-row.is-empty,
 .sample-card.is-empty,
 .river-stack.is-empty {

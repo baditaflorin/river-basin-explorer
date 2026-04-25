@@ -10,7 +10,7 @@ OpenStreetMap-based river explorer for loading one or more rivers, showing the m
 - Demo sample cache: prebuilt `data/samples/*.json` bundles can be loaded instantly for repeatable demos without hitting Overpass every time.
 - Live basin loading: direct tributaries and upstream descendants are discovered from OpenStreetMap waterway geometry.
 - Elevation profile: 10 sampled points from source to mouth, including source elevation, mouth elevation, total drop, and clickable profile samples that center the map.
-- Basemap switching: OSM Standard, OSM Humanitarian, OpenTopoMap, and a blank dark background.
+- Basemap switching: OSM Standard, OSM Humanitarian, OpenTopoMap, CARTO Light, CARTO Dark, ESRI Satellite, and blank dark/white backgrounds.
 - Retry and backoff: configurable retry attempts from 4 to 9 for Overpass, Nominatim, and elevation requests.
 
 ## Run Locally
@@ -42,7 +42,10 @@ Or rebuild a single sample:
 ```bash
 node scripts/build-sample-cache.mjs mures-order2
 node scripts/build-sample-cache.mjs olt-order2
+node scripts/build-sample-cache.mjs danube-order1
 ```
+
+The Danube target uses `maxOrder=1` and a tighter padding because the basin spans most of Central and Eastern Europe; even at order 1 the tiled Overpass run takes a while.
 
 The builder resolves the river from OpenStreetMap, downloads the main stem plus basin waterway tiles, samples elevation at 10 points, and writes a repo-local JSON bundle plus the manifest.
 

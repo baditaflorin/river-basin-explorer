@@ -2,20 +2,34 @@
   "version": 1,
   "samples": [
     {
-      "ref": "relation:89325",
-      "label": "Mureș repo sample",
-      "file": "data/samples/mures-order2.json",
+      "ref": "relation:1567969",
+      "label": "Olt · main",
+      "file": "data/samples/olt-main.json",
       "options": {
         "toleranceM": 900,
-        "maxOrder": 2,
+        "maxOrder": 0,
         "paddingDeg": 0.25,
         "attempts": 6
       },
-      "builtAt": "2026-04-25T16:13:11.870Z"
+      "tier": 0,
+      "builtAt": "2026-04-25T16:54:43.731Z"
     },
     {
       "ref": "relation:1567969",
-      "label": "Olt repo sample",
+      "label": "Olt · order1",
+      "file": "data/samples/olt-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 1,
+      "builtAt": "2026-04-25T16:54:43.731Z"
+    },
+    {
+      "ref": "relation:1567969",
+      "label": "Olt · order2",
       "file": "data/samples/olt-order2.json",
       "options": {
         "toleranceM": 900,
@@ -23,7 +37,99 @@
         "paddingDeg": 0.25,
         "attempts": 6
       },
-      "builtAt": "2026-04-25T16:14:45.560Z"
+      "tier": 2,
+      "builtAt": "2026-04-25T16:54:43.731Z"
+    },
+    {
+      "ref": "relation:1567969",
+      "label": "Olt · order3",
+      "file": "data/samples/olt-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 3,
+      "builtAt": "2026-04-25T16:54:43.731Z"
+    },
+    {
+      "ref": "relation:1567969",
+      "label": "Olt · order4",
+      "file": "data/samples/olt-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 4,
+      "builtAt": "2026-04-25T16:54:43.731Z"
+    },
+    {
+      "ref": "relation:89325",
+      "label": "Mureș · main",
+      "file": "data/samples/mures-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 0,
+      "builtAt": "2026-04-25T16:51:40.688Z"
+    },
+    {
+      "ref": "relation:89325",
+      "label": "Mureș · order1",
+      "file": "data/samples/mures-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 1,
+      "builtAt": "2026-04-25T16:51:40.688Z"
+    },
+    {
+      "ref": "relation:89325",
+      "label": "Mureș · order2",
+      "file": "data/samples/mures-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 2,
+      "builtAt": "2026-04-25T16:51:40.688Z"
+    },
+    {
+      "ref": "relation:89325",
+      "label": "Mureș · order3",
+      "file": "data/samples/mures-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 3,
+      "builtAt": "2026-04-25T16:51:40.688Z"
+    },
+    {
+      "ref": "relation:89325",
+      "label": "Mureș · order4",
+      "file": "data/samples/mures-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 4,
+      "builtAt": "2026-04-25T16:51:40.688Z"
     }
   ]
 }

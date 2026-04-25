@@ -65,47 +65,89 @@ export const BASEMAPS = {
     },
     background: "#dce9e3"
   },
+  cartoLight: {
+    label: "CARTO Light",
+    url: "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
+    options: {
+      maxZoom: 19,
+      subdomains: "abcd",
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
+    },
+    background: "#f3f6f8"
+  },
+  cartoDark: {
+    label: "CARTO Dark",
+    url: "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
+    options: {
+      maxZoom: 19,
+      subdomains: "abcd",
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
+    },
+    background: "#0c1620"
+  },
+  satellite: {
+    label: "ESRI Satellite",
+    url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+    options: {
+      maxZoom: 19,
+      attribution:
+        'Tiles &copy; Esri — Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    },
+    background: "#0a1320"
+  },
   blank: {
     label: "Blank / dark",
     background: "#03111f"
+  },
+  blankWhite: {
+    label: "Blank / white",
+    background: "#ffffff"
   }
 };
 
 export const RIVER_COLOR_PRESETS = [
   {
-    main: "#1557a6",
-    direct: "#2788cf",
-    descendant: "#73c0ea",
-    endpoint: "#dff4ff"
+    main: "#1462a3",
+    direct: "#3793d4",
+    descendant: "#87c5ea",
+    endpoint: "#e3f2fb"
   },
   {
-    main: "#146b84",
-    direct: "#1f9ab3",
-    descendant: "#77d5df",
-    endpoint: "#defbfd"
+    main: "#0a7e74",
+    direct: "#20b3a8",
+    descendant: "#82dbcd",
+    endpoint: "#e0f9f4"
   },
   {
-    main: "#254d9f",
-    direct: "#3f7fe0",
-    descendant: "#8fb5ff",
-    endpoint: "#e8f0ff"
+    main: "#06658c",
+    direct: "#1e9ec3",
+    descendant: "#82d3ed",
+    endpoint: "#e0f5fb"
   },
   {
-    main: "#0f6a6d",
-    direct: "#2aa4a0",
-    descendant: "#8de1d0",
-    endpoint: "#e9fffa"
+    main: "#2a3a8a",
+    direct: "#4f63c4",
+    descendant: "#98a4dc",
+    endpoint: "#e7e9f6"
   },
   {
-    main: "#1f5e8a",
-    direct: "#4798cb",
-    descendant: "#9bd3f2",
-    endpoint: "#eef9ff"
+    main: "#1f5f3d",
+    direct: "#3a9560",
+    descendant: "#95cba6",
+    endpoint: "#e6f5ec"
   },
   {
-    main: "#315e91",
-    direct: "#4c95c8",
-    descendant: "#95caed",
-    endpoint: "#ecf6ff"
+    main: "#b4501f",
+    direct: "#df8245",
+    descendant: "#f0b889",
+    endpoint: "#fbeadb"
+  },
+  {
+    main: "#5b3a7a",
+    direct: "#8b62b5",
+    descendant: "#c4a2da",
+    endpoint: "#efe6f6"
   }
 ];

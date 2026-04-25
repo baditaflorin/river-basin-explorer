@@ -7,6 +7,7 @@ import { promisify } from "node:util";
 import { classifyBasin } from "../src/geo/classifier.js";
 import {
   boundsForWaterways,
+  collectionLengthKm,
   expandBounds,
   inferFlowEndpoints,
   mergeWaterwaysIntoPath,
@@ -24,7 +25,7 @@ const NOMINATIM_ENDPOINT = "https://nominatim.openstreetmap.org/search";
 const ELEVATION_ENDPOINT = "https://api.opentopodata.org/v1/aster30m";
 const LARGE_BUFFER = 128 * 1024 * 1024;
 
-const sampleOptions = {
+const defaultOptions = {
   toleranceM: 900,
   maxOrder: 2,
   paddingDeg: 0.25,
@@ -34,13 +35,33 @@ const sampleOptions = {
 const targets = [
   {
     name: "Mureș",
-    slug: "mures-order2",
-    label: "Mureș repo sample"
+    slug: "mures",
+    label: "Mureș repo sample",
+    options: { ...defaultOptions, maxOrder: 4 }
   },
   {
     name: "Olt",
-    slug: "olt-order2",
-    label: "Olt repo sample"
+    slug: "olt",
+    label: "Olt repo sample",
+    options: { ...defaultOptions, maxOrder: 4 }
+  },
+  {
+    name: "Dunărea",
+    slug: "danube",
+    label: "Dunărea repo sample",
+    options: { ...defaultOptions, maxOrder: 4, paddingDeg: 0.1 }
+  },
+  {
+    name: "Argeș",
+    slug: "arges",
+    label: "Argeș repo sample",
+    options: { ...defaultOptions, maxOrder: 4 }
+  },
+  {
+    name: "Dâmbovița",
+    slug: "dambovita",
+    label: "Dâmbovița repo sample",
+    options: { ...defaultOptions, maxOrder: 4 }
   }
 ];
 
@@ -51,34 +72,35 @@ const activeTargets = requestedTargets.size
 
 await mkdir(samplesDir, { recursive: true });
 
-for (const target of activeTargets) {
-  console.log(`Building ${target.label}...`);
-  const candidate = await resolveCandidate(target);
-  const mainWaterways = await loadRiverGeometry(candidate);
-  const elevationProfile = await buildElevationProfile(mainWaterways);
-  const classificationBundle = await buildBasinBundle(candidate, mainWaterways);
+const writtenManifestEntries = [];
 
-  const bundle = {
-    version: 1,
-    ref: candidateRef(candidate),
-    label: target.label,
+for (const target of activeTargets) {
+  const targetOptions = { ...defaultOptions, ...(target.options || {}) };
+  console.log(`Building ${target.label} (maxOrder=${targetOptions.maxOrder}, padding=${targetOptions.paddingDeg})...`);
+  const candidate = await resolveCandidate(target);
+  const mainWaterways = await loadRiverGeometry(candidate, targetOptions);
+  const elevationProfile = await buildElevationProfile(mainWaterways);
+  const classificationBundle = await buildBasinBundle(candidate, mainWaterways, targetOptions);
+
+  const ref = candidateRef(candidate);
+  const builtAt = new Date().toISOString();
+
+  const tiers = await writeTieredBundles({
+    target,
+    targetOptions,
     candidate,
+    ref,
     mainWaterways,
     elevationProfile,
     classification: classificationBundle.classification,
-    loadedCount: classificationBundle.loadedCount,
-    options: sampleOptions,
-    builtAt: new Date().toISOString(),
-    sourceLabel: "repo sample"
-  };
+    builtAt
+  });
 
-  const relativeFile = `data/samples/${target.slug}.json`;
-  await writeFile(resolve(rootDir, relativeFile), JSON.stringify(bundle, null, 2));
+  for (const entry of tiers) writtenManifestEntries.push(entry);
 
-  console.log(`Saved ${target.label}`);
+  console.log(`Saved ${target.label} tiers (main + order1${targetOptions.maxOrder >= 2 ? "..." + targetOptions.maxOrder : ""})`);
+  await writeManifest(writtenManifestEntries);
 }
-
-await writeManifest();
 
 async function resolveCandidate(target) {
   const queries = [target.name, `River ${target.name}`];
@@ -118,7 +140,7 @@ async function resolveCandidate(target) {
   throw new Error(`No river candidate found for ${target.name}`);
 }
 
-async function loadRiverGeometry(candidate) {
+async function loadRiverGeometry(candidate, options = defaultOptions) {
   const query =
     candidate.osmType === "relation"
       ? `
@@ -134,35 +156,35 @@ async function loadRiverGeometry(candidate) {
         out tags geom;
       `;
 
-  const data = await runOverpass(query);
+  const data = await runOverpass(query, options);
   return overpassToWaterways(data, candidate);
 }
 
-async function loadWaterwaysInBounds(bounds) {
+async function loadWaterwaysInBounds(bounds, options = defaultOptions) {
   const query = `
     [out:json][timeout:70];
     way["waterway"~"^(river|stream|canal|drain|ditch)$"](${bounds.south},${bounds.west},${bounds.north},${bounds.east});
     out tags geom;
   `;
 
-  const data = await runOverpass(query);
+  const data = await runOverpass(query, options);
   return overpassToWaterways(data);
 }
 
-async function buildBasinBundle(candidate, mainWaterways) {
-  const bounds = expandBounds(boundsForWaterways(mainWaterways), sampleOptions.paddingDeg);
+async function buildBasinBundle(candidate, mainWaterways, options = defaultOptions) {
+  const bounds = expandBounds(boundsForWaterways(mainWaterways), options.paddingDeg);
   const tiles = splitBounds(bounds, 1);
   const allWaterways = new Map();
 
   for (const [index, tile] of tiles.entries()) {
-    const waterways = await loadWaterwaysInBounds(tile);
+    const waterways = await loadWaterwaysInBounds(tile, options);
     waterways.forEach((waterway) => allWaterways.set(waterway.id, waterway));
     if (index < tiles.length - 1) await sleep(700);
   }
 
   const classification = classifyBasin(Array.from(allWaterways.values()), mainWaterways, {
-    toleranceM: sampleOptions.toleranceM,
-    maxOrder: sampleOptions.maxOrder
+    toleranceM: options.toleranceM,
+    maxOrder: options.maxOrder
   });
 
   return {
@@ -178,7 +200,7 @@ async function buildElevationProfile(mainWaterways) {
   return runElevation(samples);
 }
 
-async function runOverpass(query) {
+async function runOverpass(query, options = defaultOptions) {
   return retryWithBackoff(async () => {
     const { stdout } = await execFileAsync(
       "curl",
@@ -211,7 +233,7 @@ async function runOverpass(query) {
     }
 
     return json;
-  }, { attempts: sampleOptions.attempts, baseDelayMs: 1300, maxDelayMs: 18000 });
+  }, { attempts: options.attempts, baseDelayMs: 1300, maxDelayMs: 18000 });
 }
 
 async function runNominatim(query) {
@@ -306,28 +328,111 @@ function normalizeName(value) {
     .trim();
 }
 
-async function writeManifest() {
-  const manifest = {
-    version: 1,
-    samples: []
-  };
+async function writeTieredBundles(context) {
+  const { target, targetOptions, candidate, ref, mainWaterways, elevationProfile, classification, builtAt } = context;
+  const direct = classification.direct || [];
+  const descendants = classification.descendants || [];
+  const directByOrder = direct.filter((waterway) => waterway.basinOrder === 1);
+  const descendantsByTier = new Map();
+  descendants.forEach((waterway) => {
+    const order = waterway.basinOrder;
+    if (!descendantsByTier.has(order)) descendantsByTier.set(order, []);
+    descendantsByTier.get(order).push(waterway);
+  });
 
-  for (const target of targets) {
-    const relativeFile = `data/samples/${target.slug}.json`;
+  const tiers = [];
+  const baseSlug = target.slug.replace(/-(?:order\d+|main)$/, "");
 
-    try {
-      const bundle = JSON.parse(await readFile(resolve(rootDir, relativeFile), "utf-8"));
-      manifest.samples.push({
-        ref: bundle.ref,
-        label: target.label,
-        file: relativeFile,
-        options: bundle.options,
-        builtAt: bundle.builtAt
-      });
-    } catch (error) {
-      // Ignore samples that have not been generated yet.
+  for (let tier = 0; tier <= targetOptions.maxOrder; tier += 1) {
+    const slice = sliceClassificationToTier({ directByOrder, descendantsByTier, tier });
+    const tierLabel = tier === 0 ? "main" : `order${tier}`;
+    const relativeFile = `data/samples/${baseSlug}-${tierLabel}.json`;
+    const bundle = {
+      version: 1,
+      ref,
+      label: `${target.label.replace(/ repo sample$/i, "")} · ${tierLabel}`,
+      candidate,
+      mainWaterways,
+      elevationProfile,
+      classification: slice,
+      loadedCount: mainWaterways.length + slice.direct.length + slice.descendants.length,
+      options: { ...targetOptions, maxOrder: tier },
+      tier,
+      builtAt,
+      sourceLabel: "repo sample"
+    };
+
+    await writeFile(resolve(rootDir, relativeFile), JSON.stringify(bundle, null, 2));
+
+    tiers.push({
+      ref,
+      label: bundle.label,
+      file: relativeFile,
+      options: bundle.options,
+      tier,
+      builtAt
+    });
+  }
+
+  return tiers;
+}
+
+function sliceClassificationToTier({ directByOrder, descendantsByTier, tier }) {
+  const direct = tier >= 1 ? directByOrder : [];
+  const descendants = [];
+  if (tier >= 2) {
+    for (let order = 2; order <= tier; order += 1) {
+      const list = descendantsByTier.get(order) || [];
+      descendants.push(...list);
     }
   }
 
-  await writeFile(resolve(samplesDir, "manifest.json"), JSON.stringify(manifest, null, 2));
+  return {
+    direct,
+    descendants,
+    stats: {
+      directCount: direct.length,
+      descendantCount: descendants.length,
+      waterwayCount: direct.length + descendants.length,
+      directKm: collectionLengthKm(direct),
+      descendantKm: collectionLengthKm(descendants),
+      totalKm: collectionLengthKm(direct) + collectionLengthKm(descendants)
+    }
+  };
+}
+
+async function writeManifest(newEntries) {
+  const manifestPath = resolve(samplesDir, "manifest.json");
+  const existing = await readExistingManifest(manifestPath);
+
+  // Drop entries that point to missing files or that we have just rewritten
+  const newKeys = new Set(newEntries.map((entry) => entry.file));
+  const survivors = [];
+  for (const entry of existing.samples || []) {
+    if (newKeys.has(entry.file)) continue;
+    try {
+      await readFile(resolve(rootDir, entry.file));
+      survivors.push(entry);
+    } catch (error) {
+      // file gone — skip
+    }
+  }
+
+  const manifest = {
+    version: 1,
+    samples: [...survivors, ...newEntries].sort((a, b) => {
+      if (a.ref !== b.ref) return a.ref.localeCompare(b.ref);
+      return (a.tier ?? 0) - (b.tier ?? 0);
+    })
+  };
+
+  await writeFile(manifestPath, JSON.stringify(manifest, null, 2));
+}
+
+async function readExistingManifest(manifestPath) {
+  try {
+    return JSON.parse(await readFile(manifestPath, "utf-8"));
+  } catch (error) {
+    return { version: 1, samples: [] };
+  }
 }

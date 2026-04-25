@@ -282,6 +282,76 @@
       "continent": "North America"
     },
     {
+      "ref": "relation:2182503",
+      "label": "Tennessee River · main",
+      "file": "data/samples/tennessee-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 0,
+      "builtAt": "2026-04-25T18:26:17.169Z",
+      "continent": "North America"
+    },
+    {
+      "ref": "relation:2182503",
+      "label": "Tennessee River · order1",
+      "file": "data/samples/tennessee-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 1,
+      "builtAt": "2026-04-25T18:26:17.169Z",
+      "continent": "North America"
+    },
+    {
+      "ref": "relation:2182503",
+      "label": "Tennessee River · order2",
+      "file": "data/samples/tennessee-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 2,
+      "builtAt": "2026-04-25T18:26:17.169Z",
+      "continent": "North America"
+    },
+    {
+      "ref": "relation:2182503",
+      "label": "Tennessee River · order3",
+      "file": "data/samples/tennessee-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 3,
+      "builtAt": "2026-04-25T18:26:17.169Z",
+      "continent": "North America"
+    },
+    {
+      "ref": "relation:2182503",
+      "label": "Tennessee River · order4",
+      "file": "data/samples/tennessee-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 4,
+      "builtAt": "2026-04-25T18:26:17.169Z",
+      "continent": "North America"
+    },
+    {
       "ref": "relation:2188548",
       "label": "Tigris · main",
       "file": "data/samples/tigris-main.json",
@@ -489,6 +559,146 @@
       },
       "tier": 4,
       "builtAt": "2026-04-25T17:40:26.720Z",
+      "continent": "Asia"
+    },
+    {
+      "ref": "relation:34392",
+      "label": "Vistula · main",
+      "file": "data/samples/vistula-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 0,
+      "builtAt": "2026-04-25T18:24:32.064Z",
+      "continent": "Europe"
+    },
+    {
+      "ref": "relation:34392",
+      "label": "Vistula · order1",
+      "file": "data/samples/vistula-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 1,
+      "builtAt": "2026-04-25T18:24:32.064Z",
+      "continent": "Europe"
+    },
+    {
+      "ref": "relation:34392",
+      "label": "Vistula · order2",
+      "file": "data/samples/vistula-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 2,
+      "builtAt": "2026-04-25T18:24:32.064Z",
+      "continent": "Europe"
+    },
+    {
+      "ref": "relation:34392",
+      "label": "Vistula · order3",
+      "file": "data/samples/vistula-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 3,
+      "builtAt": "2026-04-25T18:24:32.064Z",
+      "continent": "Europe"
+    },
+    {
+      "ref": "relation:34392",
+      "label": "Vistula · order4",
+      "file": "data/samples/vistula-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 4,
+      "builtAt": "2026-04-25T18:24:32.064Z",
+      "continent": "Europe"
+    },
+    {
+      "ref": "relation:403702",
+      "label": "Han River · main",
+      "file": "data/samples/han-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 0,
+      "builtAt": "2026-04-25T18:27:50.974Z",
+      "continent": "Asia"
+    },
+    {
+      "ref": "relation:403702",
+      "label": "Han River · order1",
+      "file": "data/samples/han-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 1,
+      "builtAt": "2026-04-25T18:27:50.974Z",
+      "continent": "Asia"
+    },
+    {
+      "ref": "relation:403702",
+      "label": "Han River · order2",
+      "file": "data/samples/han-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 2,
+      "builtAt": "2026-04-25T18:27:50.974Z",
+      "continent": "Asia"
+    },
+    {
+      "ref": "relation:403702",
+      "label": "Han River · order3",
+      "file": "data/samples/han-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 3,
+      "builtAt": "2026-04-25T18:27:50.974Z",
+      "continent": "Asia"
+    },
+    {
+      "ref": "relation:403702",
+      "label": "Han River · order4",
+      "file": "data/samples/han-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 4,
+      "builtAt": "2026-04-25T18:27:50.974Z",
       "continent": "Asia"
     },
     {
@@ -700,6 +910,76 @@
       "tier": 4,
       "builtAt": "2026-04-25T16:51:40.688Z",
       "continent": "Europe"
+    },
+    {
+      "ref": "relation:960818",
+      "label": "Limpopo · main",
+      "file": "data/samples/limpopo-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 0,
+      "builtAt": "2026-04-25T18:29:14.553Z",
+      "continent": "Africa"
+    },
+    {
+      "ref": "relation:960818",
+      "label": "Limpopo · order1",
+      "file": "data/samples/limpopo-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 1,
+      "builtAt": "2026-04-25T18:29:14.553Z",
+      "continent": "Africa"
+    },
+    {
+      "ref": "relation:960818",
+      "label": "Limpopo · order2",
+      "file": "data/samples/limpopo-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 2,
+      "builtAt": "2026-04-25T18:29:14.553Z",
+      "continent": "Africa"
+    },
+    {
+      "ref": "relation:960818",
+      "label": "Limpopo · order3",
+      "file": "data/samples/limpopo-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 3,
+      "builtAt": "2026-04-25T18:29:14.553Z",
+      "continent": "Africa"
+    },
+    {
+      "ref": "relation:960818",
+      "label": "Limpopo · order4",
+      "file": "data/samples/limpopo-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 4,
+      "builtAt": "2026-04-25T18:29:14.553Z",
+      "continent": "Africa"
     },
     {
       "ref": "way:466629731",

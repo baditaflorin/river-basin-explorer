@@ -1122,6 +1122,42 @@
       "continent": "Europe"
     },
     {
+      "ref": "relation:89652",
+      "label": "Dunărea · main",
+      "file": "data/samples/danube-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.05,
+        "attempts": 6,
+        "curlMaxTimeS": 600,
+        "tileSizeDeg": 1.5,
+        "overpassTimeoutS": 360,
+        "waterwayPattern": "^(river|canal)$"
+      },
+      "tier": 0,
+      "builtAt": "2026-04-25T19:04:07.660Z",
+      "continent": "Europe"
+    },
+    {
+      "ref": "relation:89652",
+      "label": "Dunărea · order1",
+      "file": "data/samples/danube-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.05,
+        "attempts": 6,
+        "curlMaxTimeS": 600,
+        "tileSizeDeg": 1.5,
+        "overpassTimeoutS": 360,
+        "waterwayPattern": "^(river|canal)$"
+      },
+      "tier": 1,
+      "builtAt": "2026-04-25T19:04:07.660Z",
+      "continent": "Europe"
+    },
+    {
       "ref": "relation:960818",
       "label": "Limpopo · main",
       "file": "data/samples/limpopo-main.json",

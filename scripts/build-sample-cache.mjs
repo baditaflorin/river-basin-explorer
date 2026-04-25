@@ -37,7 +37,7 @@ const defaultOptions = {
 const targets = [
   { name: "Mureș", slug: "mures", label: "Mureș repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 4 } },
   { name: "Olt", slug: "olt", label: "Olt repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 4 } },
-  { name: "Dunărea", slug: "danube", label: "Dunărea repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 1, paddingDeg: 0.1, curlMaxTimeS: 600, tileSizeDeg: 1, overpassTimeoutS: 360 } },
+  { name: "Dunărea", slug: "danube", label: "Dunărea repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 1, paddingDeg: 0.05, curlMaxTimeS: 600, tileSizeDeg: 1.5, overpassTimeoutS: 360, waterwayPattern: "^(river|canal)$" } },
   { name: "Argeș", slug: "arges", label: "Argeș repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 4 } },
   { name: "Dâmbovița", slug: "dambovita", label: "Dâmbovița repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 4 } },
   { name: "Thames", slug: "thames", label: "Thames repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 4 } },
@@ -159,9 +159,10 @@ async function loadRiverGeometry(candidate, options = defaultOptions) {
 
 async function loadWaterwaysInBounds(bounds, options = defaultOptions) {
   const overpassTimeoutS = options.overpassTimeoutS ?? 70;
+  const waterwayPattern = options.waterwayPattern ?? "^(river|stream|canal|drain|ditch)$";
   const query = `
     [out:json][timeout:${overpassTimeoutS}];
-    way["waterway"~"^(river|stream|canal|drain|ditch)$"](${bounds.south},${bounds.west},${bounds.north},${bounds.east});
+    way["waterway"~"${waterwayPattern}"](${bounds.south},${bounds.west},${bounds.north},${bounds.east});
     out tags geom;
   `;
 

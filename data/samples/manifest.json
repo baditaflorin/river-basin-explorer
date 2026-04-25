@@ -142,6 +142,76 @@
       "continent": "Europe"
     },
     {
+      "ref": "relation:2146941",
+      "label": "Po · main",
+      "file": "data/samples/po-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 0,
+      "builtAt": "2026-04-25T18:08:51.594Z",
+      "continent": "Europe"
+    },
+    {
+      "ref": "relation:2146941",
+      "label": "Po · order1",
+      "file": "data/samples/po-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 1,
+      "builtAt": "2026-04-25T18:08:51.594Z",
+      "continent": "Europe"
+    },
+    {
+      "ref": "relation:2146941",
+      "label": "Po · order2",
+      "file": "data/samples/po-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 2,
+      "builtAt": "2026-04-25T18:08:51.594Z",
+      "continent": "Europe"
+    },
+    {
+      "ref": "relation:2146941",
+      "label": "Po · order3",
+      "file": "data/samples/po-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 3,
+      "builtAt": "2026-04-25T18:08:51.594Z",
+      "continent": "Europe"
+    },
+    {
+      "ref": "relation:2146941",
+      "label": "Po · order4",
+      "file": "data/samples/po-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 4,
+      "builtAt": "2026-04-25T18:08:51.594Z",
+      "continent": "Europe"
+    },
+    {
       "ref": "relation:2148192",
       "label": "Hudson River · main",
       "file": "data/samples/hudson-main.json",

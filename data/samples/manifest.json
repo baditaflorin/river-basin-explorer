@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "samples": [
+    {
+      "ref": "relation:89325",
+      "label": "Mureș repo sample",
+      "file": "data/samples/mures-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "builtAt": "2026-04-25T16:13:11.870Z"
+    },
+    {
+      "ref": "relation:1567969",
+      "label": "Olt repo sample",
+      "file": "data/samples/olt-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "builtAt": "2026-04-25T16:14:45.560Z"
+    }
+  ]
+}

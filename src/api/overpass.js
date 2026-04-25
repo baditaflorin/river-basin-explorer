@@ -105,6 +105,18 @@ export async function searchRivers(name, options = {}) {
   return mergeCandidates([...exactCandidates, ...nominatimCandidates], name).slice(0, 20);
 }
 
+export function candidateRef(candidate) {
+  return `${candidate.osmType}:${candidate.id}`;
+}
+
+export function parseCandidateRef(ref) {
+  const [osmType, rawId] = String(ref).split(":");
+  return {
+    osmType,
+    id: Number.parseInt(rawId, 10)
+  };
+}
+
 async function searchRiversByExactTags(name, options = {}) {
   const clauses = buildNameVariants(name)
     .flatMap((variant) =>
@@ -128,17 +140,7 @@ async function searchRiversByExactTags(name, options = {}) {
   const data = await runOverpass(query, options);
   return data.elements
     .filter((element) => element.tags?.name)
-    .map((element) => ({
-      osmType: element.type,
-      id: element.id,
-      name: element.tags.name,
-      localName: element.tags["name:en"] || element.tags["name:ro"] || element.tags["name:hu"] || "",
-      wikidata: element.tags.wikidata || "",
-      wikipedia: element.tags.wikipedia || "",
-      center: element.center ? [element.center.lat, element.center.lon] : null,
-      tags: element.tags,
-      source: "overpass"
-    }));
+    .map((element) => mapElementToCandidate(element, "overpass"));
 }
 
 async function searchRiversByNominatim(name, options = {}) {
@@ -278,6 +280,19 @@ export async function loadRiverGeometry(candidate, options = {}) {
   return overpassToWaterways(data, candidate);
 }
 
+export async function loadRiverCandidateByRef(ref, options = {}) {
+  const parsed = parseCandidateRef(ref);
+  const query = `
+    [out:json][timeout:30];
+    ${parsed.osmType}(${parsed.id});
+    out body;
+  `;
+  const data = await runOverpass(query, options);
+  const element = data.elements?.[0];
+  if (!element) throw new Error(`Unable to load river ${ref}`);
+  return mapElementToCandidate(element, "overpass");
+}
+
 export async function loadWaterwaysInBounds(bounds, options = {}) {
   const query = `
     [out:json][timeout:70];
@@ -301,4 +316,18 @@ export function overpassToWaterways(data, fallback = null) {
       points: way.geometry.map((point) => [point.lat, point.lon]),
       tags: way.tags || {}
     }));
+}
+
+function mapElementToCandidate(element, source) {
+  return {
+    osmType: element.type,
+    id: element.id,
+    name: element.tags.name,
+    localName: element.tags["name:en"] || element.tags["name:ro"] || element.tags["name:hu"] || "",
+    wikidata: element.tags.wikidata || "",
+    wikipedia: element.tags.wikipedia || "",
+    center: element.center ? [element.center.lat, element.center.lon] : null,
+    tags: element.tags,
+    source
+  };
 }

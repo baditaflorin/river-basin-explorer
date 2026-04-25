@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta
       name="description"
-      content="Generic OpenStreetMap river basin explorer for any river, direct tributaries, and upstream descendants."
+      content="Generic OpenStreetMap river basin explorer for any river, direct tributaries, upstream descendants, and reusable demo samples."
     >
     <title>River Basin Explorer</title>
     <link rel="preconnect" href="https://tile.openstreetmap.org">
@@ -23,6 +23,7 @@
           <div>
             <p class="eyebrow">OpenStreetMap hydrology</p>
             <h1>River Basin Explorer</h1>
+            <p class="brand-copy">Multi-river basin explorer with reusable demo caches and shareable map states.</p>
           </div>
           <span class="status-pill" id="networkStatus">Ready</span>
         </header>
@@ -30,7 +31,7 @@
         <form class="search-form" id="riverSearchForm">
           <label for="riverSearch">River name</label>
           <div class="search-row">
-            <input id="riverSearch" type="search" value="Mureș" autocomplete="off" placeholder="Try Mureș, Thames, Arieș, Nile">
+            <input id="riverSearch" type="search" value="Mureș" autocomplete="off" placeholder="Try Mureș, Olt, Thames, Nile">
             <button type="submit" title="Search rivers">
               <i data-lucide="search" aria-hidden="true"></i>
               <span>Search</span>
@@ -38,10 +39,18 @@
           </div>
           <div class="example-row" aria-label="Example rivers">
             <button type="button" data-example="Mureș">Mureș</button>
+            <button type="button" data-example="Olt">Olt</button>
             <button type="button" data-example="Thames">Thames</button>
-            <button type="button" data-example="Arieș">Arieș</button>
           </div>
         </form>
+
+        <section class="sample-section">
+          <div class="section-heading">
+            <h2>Demo Samples</h2>
+            <span id="sampleStatus">loading</span>
+          </div>
+          <div class="sample-list" id="sampleList"></div>
+        </section>
 
         <section class="candidate-section">
           <div class="section-heading">
@@ -51,9 +60,17 @@
           <div class="candidate-list" id="candidateList"></div>
         </section>
 
+        <section class="active-section">
+          <div class="section-heading">
+            <h2>Active Rivers</h2>
+            <span id="activeStatus">0 active</span>
+          </div>
+          <div class="river-stack" id="activeRiverList"></div>
+        </section>
+
         <section class="selected-section">
           <div class="section-heading">
-            <h2>Selected River</h2>
+            <h2>Focused River</h2>
             <span id="selectedStatus">none</span>
           </div>
           <div class="summary-grid" id="riverSummary">
@@ -62,6 +79,20 @@
             <span><strong>n/a</strong> source candidate</span>
             <span><strong>n/a</strong> mouth candidate</span>
           </div>
+        </section>
+
+        <section class="elevation-section">
+          <div class="section-heading">
+            <h2>Elevation Profile</h2>
+            <span id="elevationStatus">waiting</span>
+          </div>
+          <div class="summary-grid" id="elevationSummary">
+            <span><strong>n/a</strong> source elevation</span>
+            <span><strong>n/a</strong> mouth elevation</span>
+            <span><strong>0 m</strong> total drop</span>
+            <span><strong>10</strong> sampled points</span>
+          </div>
+          <div class="profile-grid" id="elevationProfile"></div>
         </section>
 
         <section class="basin-controls">
@@ -109,10 +140,23 @@
               </select>
             </label>
           </div>
-          <button class="wide-command" id="loadBasin" type="button" disabled>
-            <i data-lucide="waves" aria-hidden="true"></i>
-            <span>Load Direct And Descendant Shapes</span>
-          </button>
+
+          <div class="toggle-grid">
+            <label><input type="checkbox" id="preferSampleCache" checked><span>Prefer repo samples</span></label>
+            <label><input type="checkbox" id="preferLocalCache" checked><span>Reuse local cache</span></label>
+          </div>
+
+          <div class="command-grid">
+            <button class="wide-command" id="loadBasin" type="button" disabled>
+              <i data-lucide="waves" aria-hidden="true"></i>
+              <span>Load Basin For Focus</span>
+            </button>
+            <button class="wide-command" id="refreshBasin" type="button" disabled>
+              <i data-lucide="refresh-cw" aria-hidden="true"></i>
+              <span>Refresh Live Basin</span>
+            </button>
+          </div>
+
           <div class="summary-grid" id="basinSummary">
             <span><strong>0</strong> direct tributaries</span>
             <span><strong>0</strong> descendants</span>
@@ -121,17 +165,44 @@
           </div>
         </section>
 
-        <section class="layer-toggles" aria-label="Map layers">
-          <label><input type="checkbox" data-layer="main" checked><span>Main river</span></label>
-          <label><input type="checkbox" data-layer="direct" checked><span>Direct tributaries</span></label>
-          <label><input type="checkbox" data-layer="descendant" checked><span>Upstream descendants</span></label>
-          <label><input type="checkbox" data-layer="points" checked><span>Endpoints</span></label>
-        </section>
+        <section class="appearance-section">
+          <div class="section-heading">
+            <h2>Map Appearance</h2>
+            <span id="appearanceStatus">saved locally</span>
+          </div>
 
-        <section class="legend" aria-label="Map legend">
-          <span><i class="swatch is-main"></i>Main river</span>
-          <span><i class="swatch is-direct"></i>Direct tributary</span>
-          <span><i class="swatch is-descendant"></i>Upstream descendant</span>
+          <div class="settings-grid settings-grid--single">
+            <label>
+              <span>Basemap</span>
+              <select id="basemapSelect"></select>
+            </label>
+            <label>
+              <span>Shareable URL</span>
+              <input id="shareUrl" type="text" readonly>
+            </label>
+          </div>
+
+          <section class="layer-toggles" aria-label="Map layers">
+            <label><input type="checkbox" data-layer="main" checked><span>Main rivers</span></label>
+            <label><input type="checkbox" data-layer="direct" checked><span>Direct tributaries</span></label>
+            <label><input type="checkbox" data-layer="descendant" checked><span>Upstream descendants</span></label>
+            <label><input type="checkbox" data-layer="points" checked><span>Endpoints</span></label>
+          </section>
+
+          <div class="command-grid">
+            <button class="wide-command" id="copyLink" type="button">
+              <i data-lucide="link" aria-hidden="true"></i>
+              <span>Copy Share Link</span>
+            </button>
+            <button class="wide-command" id="clearCache" type="button">
+              <i data-lucide="database-zap" aria-hidden="true"></i>
+              <span>Clear Local Cache</span>
+            </button>
+            <button class="wide-command" id="resetSettings" type="button">
+              <i data-lucide="rotate-ccw" aria-hidden="true"></i>
+              <span>Reset Saved Settings</span>
+            </button>
+          </div>
         </section>
 
         <footer class="data-note">
@@ -145,7 +216,7 @@
       <main class="map-area">
         <div id="map" aria-label="Interactive river basin map"></div>
         <div class="map-hud" aria-live="polite">
-          <span id="mapStatus">Select a river to begin</span>
+          <span id="mapStatus">Select one or more rivers to begin</span>
           <span id="retryStatus">Retries: idle</span>
         </div>
       </main>

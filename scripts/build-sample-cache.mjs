@@ -33,54 +33,25 @@ const defaultOptions = {
 };
 
 const targets = [
-  {
-    name: "Mureș",
-    slug: "mures",
-    label: "Mureș repo sample",
-    options: { ...defaultOptions, maxOrder: 4 }
-  },
-  {
-    name: "Olt",
-    slug: "olt",
-    label: "Olt repo sample",
-    options: { ...defaultOptions, maxOrder: 4 }
-  },
-  {
-    name: "Dunărea",
-    slug: "danube",
-    label: "Dunărea repo sample",
-    options: { ...defaultOptions, maxOrder: 4, paddingDeg: 0.1 }
-  },
-  {
-    name: "Argeș",
-    slug: "arges",
-    label: "Argeș repo sample",
-    options: { ...defaultOptions, maxOrder: 4 }
-  },
-  {
-    name: "Dâmbovița",
-    slug: "dambovita",
-    label: "Dâmbovița repo sample",
-    options: { ...defaultOptions, maxOrder: 4 }
-  },
-  {
-    name: "Thames",
-    slug: "thames",
-    label: "Thames repo sample",
-    options: { ...defaultOptions, maxOrder: 4 }
-  },
-  {
-    name: "Hudson River",
-    slug: "hudson",
-    label: "Hudson River repo sample",
-    options: { ...defaultOptions, maxOrder: 4 }
-  },
-  {
-    name: "Chao Phraya",
-    slug: "chaophraya",
-    label: "Chao Phraya repo sample",
-    options: { ...defaultOptions, maxOrder: 4 }
-  }
+  { name: "Mureș", slug: "mures", label: "Mureș repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Olt", slug: "olt", label: "Olt repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Dunărea", slug: "danube", label: "Dunărea repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 4, paddingDeg: 0.1 } },
+  { name: "Argeș", slug: "arges", label: "Argeș repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Dâmbovița", slug: "dambovita", label: "Dâmbovița repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Thames", slug: "thames", label: "Thames repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Loire", slug: "loire", label: "Loire repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Po", slug: "po", label: "Po repo sample", continent: "Europe", searchAliases: ["Fiume Po", "Po, Italia", "Po river Italy"], options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Vistula", slug: "vistula", label: "Vistula repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Hudson River", slug: "hudson", label: "Hudson River repo sample", continent: "North America", options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Tennessee River", slug: "tennessee", label: "Tennessee River repo sample", continent: "North America", options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Chao Phraya", slug: "chaophraya", label: "Chao Phraya repo sample", continent: "Asia", options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Tigris", slug: "tigris", label: "Tigris repo sample", continent: "Asia", options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Han River", slug: "han", label: "Han River repo sample", continent: "Asia", searchAliases: ["Han Gang", "한강", "Han River Korea", "Hangang"], options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Senegal River", slug: "senegal", label: "Senegal River repo sample", continent: "Africa", options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Limpopo", slug: "limpopo", label: "Limpopo repo sample", continent: "Africa", options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Zambezi", slug: "zambezi", label: "Zambezi repo sample", continent: "Africa", options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Magdalena River", slug: "magdalena", label: "Magdalena repo sample", continent: "South America", options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Murray River", slug: "murray", label: "Murray repo sample", continent: "Oceania", options: { ...defaultOptions, maxOrder: 4 } }
 ];
 
 const requestedTargets = new Set(process.argv.slice(2).map((value) => value.toLocaleLowerCase()));
@@ -121,7 +92,13 @@ for (const target of activeTargets) {
 }
 
 async function resolveCandidate(target) {
-  const queries = [target.name, `River ${target.name}`];
+  const queries = Array.from(
+    new Set([
+      target.name,
+      `River ${target.name}`,
+      ...(target.searchAliases || [])
+    ])
+  );
   const matches = [];
 
   for (const query of queries) {
@@ -377,7 +354,8 @@ async function writeTieredBundles(context) {
       options: { ...targetOptions, maxOrder: tier },
       tier,
       builtAt,
-      sourceLabel: "repo sample"
+      sourceLabel: "repo sample",
+      continent: target.continent || ""
     };
 
     await writeFile(resolve(rootDir, relativeFile), JSON.stringify(bundle, null, 2));
@@ -388,7 +366,8 @@ async function writeTieredBundles(context) {
       file: relativeFile,
       options: bundle.options,
       tier,
-      builtAt
+      builtAt,
+      continent: target.continent || ""
     });
   }
 

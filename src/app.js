@@ -159,6 +159,15 @@ function wireEvents() {
     void loadSampleEntry(entry);
   });
 
+  els.sampleList.addEventListener("toggle", (event) => {
+    const details = event.target.closest("details.sample-continent");
+    if (!details) return;
+    const continent = details.dataset.continent;
+    if (!continent) return;
+    if (!state.sampleContinentOpen) state.sampleContinentOpen = new Map();
+    state.sampleContinentOpen.set(continent, details.open);
+  }, true);
+
   els.candidateList.addEventListener("click", (event) => {
     const button = event.target.closest("[data-candidate-index]");
     if (!button) return;
@@ -663,6 +672,9 @@ function normalizeElevationProfile(profile, mainLengthKm) {
   });
 }
 
+const CONTINENT_ORDER = ["Europe", "Africa", "Asia", "North America", "South America", "Oceania", "Antarctica", "Other"];
+const CONTINENT_OPEN_DEFAULT = new Set(["Europe"]);
+
 function renderSampleList() {
   const samples = state.sampleManifest.samples || [];
   els.sampleStatus.textContent = samples.length ? `${samples.length} samples` : "none";
@@ -676,44 +688,85 @@ function renderSampleList() {
   samples.forEach((entry, index) => {
     const key = entry.ref || entry.file;
     if (!groups.has(key)) {
-      groups.set(key, { ref: entry.ref, name: extractRiverName(entry), entries: [] });
+      groups.set(key, {
+        ref: entry.ref,
+        name: extractRiverName(entry),
+        continent: entry.continent || "Other",
+        entries: []
+      });
     }
-    groups.get(key).entries.push({ ...entry, index });
+    const group = groups.get(key);
+    if (entry.continent) group.continent = entry.continent;
+    group.entries.push({ ...entry, index });
   });
 
-  els.sampleList.innerHTML = Array.from(groups.values())
-    .map((group) => {
-      const sortedEntries = group.entries
-        .slice()
-        .sort((a, b) => (a.tier ?? a.options?.maxOrder ?? 0) - (b.tier ?? b.options?.maxOrder ?? 0));
+  const byContinent = new Map();
+  for (const group of groups.values()) {
+    const continent = group.continent || "Other";
+    if (!byContinent.has(continent)) byContinent.set(continent, []);
+    byContinent.get(continent).push(group);
+  }
 
-      const tierButtons = sortedEntries
-        .map((entry) => {
-          const tier = entry.tier ?? entry.options?.maxOrder ?? 0;
-          const matchesCurrent =
-            Number(entry.options.maxOrder) === Number(els.upstreamOrder.value) &&
-            Number(entry.options.toleranceM) === Number(els.outletTolerance.value) &&
-            Number(entry.options.paddingDeg) === Number(els.basinPadding.value);
-          const label = tier === 0 ? "main" : `+order${tier}`;
+  const sortedContinents = Array.from(byContinent.keys()).sort((a, b) => {
+    const ai = CONTINENT_ORDER.indexOf(a);
+    const bi = CONTINENT_ORDER.indexOf(b);
+    return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+  });
+
+  const openMemory = state.sampleContinentOpen ?? (state.sampleContinentOpen = new Map());
+
+  els.sampleList.innerHTML = sortedContinents
+    .map((continent) => {
+      const groupsInContinent = byContinent.get(continent).sort((a, b) => a.name.localeCompare(b.name));
+      const totalRivers = groupsInContinent.length;
+      const totalTiers = groupsInContinent.reduce((acc, g) => acc + g.entries.length, 0);
+      const isOpen = openMemory.has(continent) ? openMemory.get(continent) : CONTINENT_OPEN_DEFAULT.has(continent);
+
+      const cards = groupsInContinent
+        .map((group) => {
+          const sortedEntries = group.entries
+            .slice()
+            .sort((a, b) => (a.tier ?? a.options?.maxOrder ?? 0) - (b.tier ?? b.options?.maxOrder ?? 0));
+
+          const tierButtons = sortedEntries
+            .map((entry) => {
+              const tier = entry.tier ?? entry.options?.maxOrder ?? 0;
+              const matchesCurrent =
+                Number(entry.options.maxOrder) === Number(els.upstreamOrder.value) &&
+                Number(entry.options.toleranceM) === Number(els.outletTolerance.value) &&
+                Number(entry.options.paddingDeg) === Number(els.basinPadding.value);
+              const label = tier === 0 ? "main" : `+order${tier}`;
+              return `
+                <button
+                  type="button"
+                  class="sample-tier ${matchesCurrent ? "is-current" : ""}"
+                  data-sample-index="${entry.index}"
+                  title="Load ${escapeHtml(group.name)} (${label})"
+                >${escapeHtml(label)}</button>
+              `;
+            })
+            .join("");
+
           return `
-            <button
-              type="button"
-              class="sample-tier ${matchesCurrent ? "is-current" : ""}"
-              data-sample-index="${entry.index}"
-              title="Load ${escapeHtml(group.name)} (${label})"
-            >${escapeHtml(label)}</button>
+            <article class="sample-card sample-card--grouped">
+              <span>
+                <strong>${escapeHtml(group.name)}</strong>
+                <small>${group.entries.length} tier${group.entries.length === 1 ? "" : "s"} cached</small>
+              </span>
+              <div class="sample-tiers">${tierButtons}</div>
+            </article>
           `;
         })
         .join("");
 
       return `
-        <article class="sample-card sample-card--grouped">
-          <span>
-            <strong>${escapeHtml(group.name)}</strong>
-            <small>${group.entries.length} tier${group.entries.length === 1 ? "" : "s"} cached</small>
-          </span>
-          <div class="sample-tiers">${tierButtons}</div>
-        </article>
+        <details class="sample-continent" data-continent="${escapeHtml(continent)}"${isOpen ? " open" : ""}>
+          <summary>
+            <span class="sample-continent__name">${escapeHtml(continent)}</span>
+            <span class="sample-continent__meta">${totalRivers} river${totalRivers === 1 ? "" : "s"} · ${totalTiers} tiers</span>
+          </summary>
+          <div class="sample-continent__body">${cards}</div>
+        </details>
       `;
     })
     .join("");

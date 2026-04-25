@@ -12,7 +12,8 @@
         "attempts": 6
       },
       "tier": 0,
-      "builtAt": "2026-04-25T16:54:43.731Z"
+      "builtAt": "2026-04-25T16:54:43.731Z",
+      "continent": "Europe"
     },
     {
       "ref": "relation:1567969",
@@ -25,7 +26,8 @@
         "attempts": 6
       },
       "tier": 1,
-      "builtAt": "2026-04-25T16:54:43.731Z"
+      "builtAt": "2026-04-25T16:54:43.731Z",
+      "continent": "Europe"
     },
     {
       "ref": "relation:1567969",
@@ -38,7 +40,8 @@
         "attempts": 6
       },
       "tier": 2,
-      "builtAt": "2026-04-25T16:54:43.731Z"
+      "builtAt": "2026-04-25T16:54:43.731Z",
+      "continent": "Europe"
     },
     {
       "ref": "relation:1567969",
@@ -51,7 +54,8 @@
         "attempts": 6
       },
       "tier": 3,
-      "builtAt": "2026-04-25T16:54:43.731Z"
+      "builtAt": "2026-04-25T16:54:43.731Z",
+      "continent": "Europe"
     },
     {
       "ref": "relation:1567969",
@@ -64,7 +68,8 @@
         "attempts": 6
       },
       "tier": 4,
-      "builtAt": "2026-04-25T16:54:43.731Z"
+      "builtAt": "2026-04-25T16:54:43.731Z",
+      "continent": "Europe"
     },
     {
       "ref": "relation:2148192",
@@ -77,7 +82,8 @@
         "attempts": 6
       },
       "tier": 0,
-      "builtAt": "2026-04-25T17:39:13.582Z"
+      "builtAt": "2026-04-25T17:39:13.582Z",
+      "continent": "North America"
     },
     {
       "ref": "relation:2148192",
@@ -90,7 +96,8 @@
         "attempts": 6
       },
       "tier": 1,
-      "builtAt": "2026-04-25T17:39:13.582Z"
+      "builtAt": "2026-04-25T17:39:13.582Z",
+      "continent": "North America"
     },
     {
       "ref": "relation:2148192",
@@ -103,7 +110,8 @@
         "attempts": 6
       },
       "tier": 2,
-      "builtAt": "2026-04-25T17:39:13.582Z"
+      "builtAt": "2026-04-25T17:39:13.582Z",
+      "continent": "North America"
     },
     {
       "ref": "relation:2148192",
@@ -116,7 +124,8 @@
         "attempts": 6
       },
       "tier": 3,
-      "builtAt": "2026-04-25T17:39:13.582Z"
+      "builtAt": "2026-04-25T17:39:13.582Z",
+      "continent": "North America"
     },
     {
       "ref": "relation:2148192",
@@ -129,7 +138,8 @@
         "attempts": 6
       },
       "tier": 4,
-      "builtAt": "2026-04-25T17:39:13.582Z"
+      "builtAt": "2026-04-25T17:39:13.582Z",
+      "continent": "North America"
     },
     {
       "ref": "relation:2263653",
@@ -142,7 +152,8 @@
         "attempts": 6
       },
       "tier": 0,
-      "builtAt": "2026-04-25T17:38:13.475Z"
+      "builtAt": "2026-04-25T17:38:13.475Z",
+      "continent": "Europe"
     },
     {
       "ref": "relation:2263653",
@@ -155,7 +166,8 @@
         "attempts": 6
       },
       "tier": 1,
-      "builtAt": "2026-04-25T17:38:13.475Z"
+      "builtAt": "2026-04-25T17:38:13.475Z",
+      "continent": "Europe"
     },
     {
       "ref": "relation:2263653",
@@ -168,7 +180,8 @@
         "attempts": 6
       },
       "tier": 2,
-      "builtAt": "2026-04-25T17:38:13.475Z"
+      "builtAt": "2026-04-25T17:38:13.475Z",
+      "continent": "Europe"
     },
     {
       "ref": "relation:2263653",
@@ -181,7 +194,8 @@
         "attempts": 6
       },
       "tier": 3,
-      "builtAt": "2026-04-25T17:38:13.475Z"
+      "builtAt": "2026-04-25T17:38:13.475Z",
+      "continent": "Europe"
     },
     {
       "ref": "relation:2263653",
@@ -194,7 +208,8 @@
         "attempts": 6
       },
       "tier": 4,
-      "builtAt": "2026-04-25T17:38:13.475Z"
+      "builtAt": "2026-04-25T17:38:13.475Z",
+      "continent": "Europe"
     },
     {
       "ref": "relation:227317",
@@ -207,7 +222,8 @@
         "attempts": 6
       },
       "tier": 0,
-      "builtAt": "2026-04-25T17:40:26.720Z"
+      "builtAt": "2026-04-25T17:40:26.720Z",
+      "continent": "Asia"
     },
     {
       "ref": "relation:227317",
@@ -220,7 +236,8 @@
         "attempts": 6
       },
       "tier": 1,
-      "builtAt": "2026-04-25T17:40:26.720Z"
+      "builtAt": "2026-04-25T17:40:26.720Z",
+      "continent": "Asia"
     },
     {
       "ref": "relation:227317",
@@ -233,7 +250,8 @@
         "attempts": 6
       },
       "tier": 2,
-      "builtAt": "2026-04-25T17:40:26.720Z"
+      "builtAt": "2026-04-25T17:40:26.720Z",
+      "continent": "Asia"
     },
     {
       "ref": "relation:227317",
@@ -246,7 +264,8 @@
         "attempts": 6
       },
       "tier": 3,
-      "builtAt": "2026-04-25T17:40:26.720Z"
+      "builtAt": "2026-04-25T17:40:26.720Z",
+      "continent": "Asia"
     },
     {
       "ref": "relation:227317",
@@ -259,7 +278,8 @@
         "attempts": 6
       },
       "tier": 4,
-      "builtAt": "2026-04-25T17:40:26.720Z"
+      "builtAt": "2026-04-25T17:40:26.720Z",
+      "continent": "Asia"
     },
     {
       "ref": "relation:5815028",
@@ -272,7 +292,8 @@
         "attempts": 6
       },
       "tier": 0,
-      "builtAt": "2026-04-25T17:20:36.598Z"
+      "builtAt": "2026-04-25T17:20:36.598Z",
+      "continent": "Europe"
     },
     {
       "ref": "relation:5815028",
@@ -285,7 +306,8 @@
         "attempts": 6
       },
       "tier": 1,
-      "builtAt": "2026-04-25T17:20:36.598Z"
+      "builtAt": "2026-04-25T17:20:36.598Z",
+      "continent": "Europe"
     },
     {
       "ref": "relation:5815028",
@@ -298,7 +320,8 @@
         "attempts": 6
       },
       "tier": 2,
-      "builtAt": "2026-04-25T17:20:36.598Z"
+      "builtAt": "2026-04-25T17:20:36.598Z",
+      "continent": "Europe"
     },
     {
       "ref": "relation:5815028",
@@ -311,7 +334,8 @@
         "attempts": 6
       },
       "tier": 3,
-      "builtAt": "2026-04-25T17:20:36.598Z"
+      "builtAt": "2026-04-25T17:20:36.598Z",
+      "continent": "Europe"
     },
     {
       "ref": "relation:5815028",
@@ -324,7 +348,8 @@
         "attempts": 6
       },
       "tier": 4,
-      "builtAt": "2026-04-25T17:20:36.598Z"
+      "builtAt": "2026-04-25T17:20:36.598Z",
+      "continent": "Europe"
     },
     {
       "ref": "relation:6213935",
@@ -337,7 +362,8 @@
         "attempts": 6
       },
       "tier": 0,
-      "builtAt": "2026-04-25T17:21:17.395Z"
+      "builtAt": "2026-04-25T17:21:17.395Z",
+      "continent": "Europe"
     },
     {
       "ref": "relation:6213935",
@@ -350,7 +376,8 @@
         "attempts": 6
       },
       "tier": 1,
-      "builtAt": "2026-04-25T17:21:17.395Z"
+      "builtAt": "2026-04-25T17:21:17.395Z",
+      "continent": "Europe"
     },
     {
       "ref": "relation:6213935",
@@ -363,7 +390,8 @@
         "attempts": 6
       },
       "tier": 2,
-      "builtAt": "2026-04-25T17:21:17.395Z"
+      "builtAt": "2026-04-25T17:21:17.395Z",
+      "continent": "Europe"
     },
     {
       "ref": "relation:6213935",
@@ -376,7 +404,8 @@
         "attempts": 6
       },
       "tier": 3,
-      "builtAt": "2026-04-25T17:21:17.395Z"
+      "builtAt": "2026-04-25T17:21:17.395Z",
+      "continent": "Europe"
     },
     {
       "ref": "relation:6213935",
@@ -389,7 +418,8 @@
         "attempts": 6
       },
       "tier": 4,
-      "builtAt": "2026-04-25T17:21:17.395Z"
+      "builtAt": "2026-04-25T17:21:17.395Z",
+      "continent": "Europe"
     },
     {
       "ref": "relation:89325",
@@ -402,7 +432,8 @@
         "attempts": 6
       },
       "tier": 0,
-      "builtAt": "2026-04-25T16:51:40.688Z"
+      "builtAt": "2026-04-25T16:51:40.688Z",
+      "continent": "Europe"
     },
     {
       "ref": "relation:89325",
@@ -415,7 +446,8 @@
         "attempts": 6
       },
       "tier": 1,
-      "builtAt": "2026-04-25T16:51:40.688Z"
+      "builtAt": "2026-04-25T16:51:40.688Z",
+      "continent": "Europe"
     },
     {
       "ref": "relation:89325",
@@ -428,7 +460,8 @@
         "attempts": 6
       },
       "tier": 2,
-      "builtAt": "2026-04-25T16:51:40.688Z"
+      "builtAt": "2026-04-25T16:51:40.688Z",
+      "continent": "Europe"
     },
     {
       "ref": "relation:89325",
@@ -441,7 +474,8 @@
         "attempts": 6
       },
       "tier": 3,
-      "builtAt": "2026-04-25T16:51:40.688Z"
+      "builtAt": "2026-04-25T16:51:40.688Z",
+      "continent": "Europe"
     },
     {
       "ref": "relation:89325",
@@ -454,7 +488,8 @@
         "attempts": 6
       },
       "tier": 4,
-      "builtAt": "2026-04-25T16:51:40.688Z"
+      "builtAt": "2026-04-25T16:51:40.688Z",
+      "continent": "Europe"
     }
   ]
 }

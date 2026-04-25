@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Generic OpenStreetMap river basin explorer for any river, direct tributaries, and upstream descendants."
+    >
+    <title>River Basin Explorer</title>
+    <link rel="preconnect" href="https://tile.openstreetmap.org">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script defer src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+    <script type="module" src="src/app.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="panel" aria-label="River basin controls">
+        <header class="brand">
+          <div>
+            <p class="eyebrow">OpenStreetMap hydrology</p>
+            <h1>River Basin Explorer</h1>
+          </div>
+          <span class="status-pill" id="networkStatus">Ready</span>
+        </header>
+
+        <form class="search-form" id="riverSearchForm">
+          <label for="riverSearch">River name</label>
+          <div class="search-row">
+            <input id="riverSearch" type="search" value="Mureș" autocomplete="off" placeholder="Try Mureș, Thames, Arieș, Nile">
+            <button type="submit" title="Search rivers">
+              <i data-lucide="search" aria-hidden="true"></i>
+              <span>Search</span>
+            </button>
+          </div>
+          <div class="example-row" aria-label="Example rivers">
+            <button type="button" data-example="Mureș">Mureș</button>
+            <button type="button" data-example="Thames">Thames</button>
+            <button type="button" data-example="Arieș">Arieș</button>
+          </div>
+        </form>
+
+        <section class="candidate-section">
+          <div class="section-heading">
+            <h2>River Matches</h2>
+            <span id="candidateStatus">No search yet</span>
+          </div>
+          <div class="candidate-list" id="candidateList"></div>
+        </section>
+
+        <section class="selected-section">
+          <div class="section-heading">
+            <h2>Selected River</h2>
+            <span id="selectedStatus">none</span>
+          </div>
+          <div class="summary-grid" id="riverSummary">
+            <span><strong>0</strong> main segments</span>
+            <span><strong>0 km</strong> mapped length</span>
+            <span><strong>n/a</strong> source candidate</span>
+            <span><strong>n/a</strong> mouth candidate</span>
+          </div>
+        </section>
+
+        <section class="basin-controls">
+          <div class="section-heading">
+            <h2>Basin Loader</h2>
+            <span id="basinStatus">waiting</span>
+          </div>
+          <div class="settings-grid">
+            <label>
+              <span>Retry attempts</span>
+              <select id="retryAttempts">
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6" selected>6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+              </select>
+            </label>
+            <label>
+              <span>Outlet tolerance</span>
+              <select id="outletTolerance">
+                <option value="500">500 m</option>
+                <option value="900" selected>900 m</option>
+                <option value="1500">1.5 km</option>
+                <option value="2500">2.5 km</option>
+              </select>
+            </label>
+            <label>
+              <span>Upstream order</span>
+              <select id="upstreamOrder">
+                <option value="1">direct only</option>
+                <option value="2" selected>direct + 2nd</option>
+                <option value="3">direct + 3rd</option>
+                <option value="4">direct + 4th</option>
+              </select>
+            </label>
+            <label>
+              <span>Basin padding</span>
+              <select id="basinPadding">
+                <option value="0.1">0.1 deg</option>
+                <option value="0.25" selected>0.25 deg</option>
+                <option value="0.5">0.5 deg</option>
+                <option value="1">1 deg</option>
+              </select>
+            </label>
+          </div>
+          <button class="wide-command" id="loadBasin" type="button" disabled>
+            <i data-lucide="waves" aria-hidden="true"></i>
+            <span>Load Direct And Descendant Shapes</span>
+          </button>
+          <div class="summary-grid" id="basinSummary">
+            <span><strong>0</strong> direct tributaries</span>
+            <span><strong>0</strong> descendants</span>
+            <span><strong>0</strong> waterway shapes</span>
+            <span><strong>0 km</strong> mapped basin length</span>
+          </div>
+        </section>
+
+        <section class="layer-toggles" aria-label="Map layers">
+          <label><input type="checkbox" data-layer="main" checked><span>Main river</span></label>
+          <label><input type="checkbox" data-layer="direct" checked><span>Direct tributaries</span></label>
+          <label><input type="checkbox" data-layer="descendant" checked><span>Upstream descendants</span></label>
+          <label><input type="checkbox" data-layer="points" checked><span>Endpoints</span></label>
+        </section>
+
+        <section class="legend" aria-label="Map legend">
+          <span><i class="swatch is-main"></i>Main river</span>
+          <span><i class="swatch is-direct"></i>Direct tributary</span>
+          <span><i class="swatch is-descendant"></i>Upstream descendant</span>
+        </section>
+
+        <footer class="data-note">
+          Data and map tiles from
+          <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap contributors</a>.
+          Code by <a href="https://github.com/baditaflorin" target="_blank" rel="noreferrer">baditaflorin</a>.
+          Repository: <a href="https://github.com/baditaflorin/river-basin-explorer" target="_blank" rel="noreferrer">river-basin-explorer</a>.
+        </footer>
+      </aside>
+
+      <main class="map-area">
+        <div id="map" aria-label="Interactive river basin map"></div>
+        <div class="map-hud" aria-live="polite">
+          <span id="mapStatus">Select a river to begin</span>
+          <span id="retryStatus">Retries: idle</span>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

@@ -67,6 +67,136 @@
       "builtAt": "2026-04-25T16:54:43.731Z"
     },
     {
+      "ref": "relation:5815028",
+      "label": "Argeș · main",
+      "file": "data/samples/arges-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 0,
+      "builtAt": "2026-04-25T17:20:36.598Z"
+    },
+    {
+      "ref": "relation:5815028",
+      "label": "Argeș · order1",
+      "file": "data/samples/arges-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 1,
+      "builtAt": "2026-04-25T17:20:36.598Z"
+    },
+    {
+      "ref": "relation:5815028",
+      "label": "Argeș · order2",
+      "file": "data/samples/arges-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 2,
+      "builtAt": "2026-04-25T17:20:36.598Z"
+    },
+    {
+      "ref": "relation:5815028",
+      "label": "Argeș · order3",
+      "file": "data/samples/arges-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 3,
+      "builtAt": "2026-04-25T17:20:36.598Z"
+    },
+    {
+      "ref": "relation:5815028",
+      "label": "Argeș · order4",
+      "file": "data/samples/arges-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 4,
+      "builtAt": "2026-04-25T17:20:36.598Z"
+    },
+    {
+      "ref": "relation:6213935",
+      "label": "Dâmbovița · main",
+      "file": "data/samples/dambovita-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 0,
+      "builtAt": "2026-04-25T17:21:17.395Z"
+    },
+    {
+      "ref": "relation:6213935",
+      "label": "Dâmbovița · order1",
+      "file": "data/samples/dambovita-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 1,
+      "builtAt": "2026-04-25T17:21:17.395Z"
+    },
+    {
+      "ref": "relation:6213935",
+      "label": "Dâmbovița · order2",
+      "file": "data/samples/dambovita-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 2,
+      "builtAt": "2026-04-25T17:21:17.395Z"
+    },
+    {
+      "ref": "relation:6213935",
+      "label": "Dâmbovița · order3",
+      "file": "data/samples/dambovita-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 3,
+      "builtAt": "2026-04-25T17:21:17.395Z"
+    },
+    {
+      "ref": "relation:6213935",
+      "label": "Dâmbovița · order4",
+      "file": "data/samples/dambovita-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6
+      },
+      "tier": 4,
+      "builtAt": "2026-04-25T17:21:17.395Z"
+    },
+    {
       "ref": "relation:89325",
       "label": "Mureș · main",
       "file": "data/samples/mures-main.json",

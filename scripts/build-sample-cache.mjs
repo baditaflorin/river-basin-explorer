@@ -37,7 +37,7 @@ const defaultOptions = {
 const targets = [
   { name: "Mureș", slug: "mures", label: "Mureș repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 4 } },
   { name: "Olt", slug: "olt", label: "Olt repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 4 } },
-  { name: "Dunărea", slug: "danube", label: "Dunărea repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 1, paddingDeg: 0.05, curlMaxTimeS: 600, tileSizeDeg: 1.5, overpassTimeoutS: 360, waterwayPattern: "^(river|canal)$" } },
+  { name: "Dunărea", slug: "danube", label: "Dunărea repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 3, paddingDeg: 0.1, curlMaxTimeS: 600, tileSizeDeg: 1.5, overpassTimeoutS: 360, waterwayPattern: "^(river|canal)$" } },
   { name: "Argeș", slug: "arges", label: "Argeș repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 4 } },
   { name: "Dâmbovița", slug: "dambovita", label: "Dâmbovița repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 4 } },
   { name: "Thames", slug: "thames", label: "Thames repo sample", continent: "Europe", options: { ...defaultOptions, maxOrder: 4 } },
@@ -53,7 +53,17 @@ const targets = [
   { name: "Limpopo", slug: "limpopo", label: "Limpopo repo sample", continent: "Africa", options: { ...defaultOptions, maxOrder: 4 } },
   { name: "Zambezi", slug: "zambezi", label: "Zambezi repo sample", continent: "Africa", options: { ...defaultOptions, maxOrder: 4 } },
   { name: "Magdalena River", slug: "magdalena", label: "Magdalena repo sample", continent: "South America", options: { ...defaultOptions, maxOrder: 4 } },
-  { name: "Murray River", slug: "murray", label: "Murray repo sample", continent: "Oceania", options: { ...defaultOptions, maxOrder: 4 } }
+  { name: "Murray River", slug: "murray", label: "Murray repo sample", continent: "Oceania", options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Sacramento River", slug: "sacramento", label: "Sacramento repo sample", continent: "North America", options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Connecticut River", slug: "connecticut", label: "Connecticut repo sample", continent: "North America", options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Orinoco", slug: "orinoco", label: "Orinoco repo sample", continent: "South America", searchAliases: ["Río Orinoco", "Orinoco River"], options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "São Francisco", slug: "saofrancisco", label: "São Francisco repo sample", continent: "South America", searchAliases: ["Rio São Francisco", "Sao Francisco River", "São Francisco River"], options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Pearl River", slug: "pearl", label: "Pearl River repo sample", continent: "Asia", searchAliases: ["珠江", "Zhu Jiang", "Pearl River China", "Xi Jiang"], options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Irrawaddy", slug: "irrawaddy", label: "Irrawaddy repo sample", continent: "Asia", searchAliases: ["Ayeyarwady", "Ayeyarwady River", "ʼIrrāwaddī"], options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Volta River", slug: "volta", label: "Volta repo sample", continent: "Africa", searchAliases: ["Volta", "River Volta", "Lower Volta"], options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Orange River", slug: "orange", label: "Orange River repo sample", continent: "Africa", searchAliases: ["Oranjerivier", "Garieprivier", "Gariep"], options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Rhône", slug: "rhone", label: "Rhône repo sample", continent: "Europe", searchAliases: ["Rhone", "Le Rhône", "River Rhône"], options: { ...defaultOptions, maxOrder: 4 } },
+  { name: "Darling River", slug: "darling", label: "Darling repo sample", continent: "Oceania", searchAliases: ["Darling", "Barwon-Darling"], options: { ...defaultOptions, maxOrder: 4 } }
 ];
 
 const requestedTargets = new Set(process.argv.slice(2).map((value) => value.toLocaleLowerCase()));
@@ -64,33 +74,44 @@ const activeTargets = requestedTargets.size
 await mkdir(samplesDir, { recursive: true });
 
 const writtenManifestEntries = [];
+const failedTargets = [];
 
 for (const target of activeTargets) {
   const targetOptions = { ...defaultOptions, ...(target.options || {}) };
   console.log(`Building ${target.label} (maxOrder=${targetOptions.maxOrder}, padding=${targetOptions.paddingDeg})...`);
-  const candidate = await resolveCandidate(target);
-  const mainWaterways = await loadRiverGeometry(candidate, targetOptions);
-  const elevationProfile = await buildElevationProfile(mainWaterways);
-  const classificationBundle = await buildBasinBundle(candidate, mainWaterways, targetOptions);
+  try {
+    const candidate = await resolveCandidate(target);
+    const mainWaterways = await loadRiverGeometry(candidate, targetOptions);
+    const elevationProfile = await buildElevationProfile(mainWaterways);
+    const classificationBundle = await buildBasinBundle(candidate, mainWaterways, targetOptions);
 
-  const ref = candidateRef(candidate);
-  const builtAt = new Date().toISOString();
+    const ref = candidateRef(candidate);
+    const builtAt = new Date().toISOString();
 
-  const tiers = await writeTieredBundles({
-    target,
-    targetOptions,
-    candidate,
-    ref,
-    mainWaterways,
-    elevationProfile,
-    classification: classificationBundle.classification,
-    builtAt
-  });
+    const tiers = await writeTieredBundles({
+      target,
+      targetOptions,
+      candidate,
+      ref,
+      mainWaterways,
+      elevationProfile,
+      classification: classificationBundle.classification,
+      builtAt
+    });
 
-  for (const entry of tiers) writtenManifestEntries.push(entry);
+    for (const entry of tiers) writtenManifestEntries.push(entry);
 
-  console.log(`Saved ${target.label} tiers (main + order1${targetOptions.maxOrder >= 2 ? "..." + targetOptions.maxOrder : ""})`);
-  await writeManifest(writtenManifestEntries);
+    console.log(`Saved ${target.label} tiers (main + order1${targetOptions.maxOrder >= 2 ? "..." + targetOptions.maxOrder : ""})`);
+    await writeManifest(writtenManifestEntries);
+  } catch (error) {
+    failedTargets.push({ target: target.label, error: error.message });
+    console.error(`FAILED ${target.label}: ${error.message}`);
+  }
+}
+
+if (failedTargets.length) {
+  console.error(`\n${failedTargets.length} target(s) failed:`);
+  for (const f of failedTargets) console.error(`  - ${f.target}: ${f.error}`);
 }
 
 async function resolveCandidate(target) {

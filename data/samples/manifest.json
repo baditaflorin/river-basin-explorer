@@ -1128,7 +1128,7 @@
       "options": {
         "toleranceM": 900,
         "maxOrder": 0,
-        "paddingDeg": 0.05,
+        "paddingDeg": 0.1,
         "attempts": 6,
         "curlMaxTimeS": 600,
         "tileSizeDeg": 1.5,
@@ -1136,7 +1136,7 @@
         "waterwayPattern": "^(river|canal)$"
       },
       "tier": 0,
-      "builtAt": "2026-04-25T19:04:07.660Z",
+      "builtAt": "2026-04-26T06:18:18.587Z",
       "continent": "Europe"
     },
     {
@@ -1146,7 +1146,7 @@
       "options": {
         "toleranceM": 900,
         "maxOrder": 1,
-        "paddingDeg": 0.05,
+        "paddingDeg": 0.1,
         "attempts": 6,
         "curlMaxTimeS": 600,
         "tileSizeDeg": 1.5,
@@ -1154,7 +1154,43 @@
         "waterwayPattern": "^(river|canal)$"
       },
       "tier": 1,
-      "builtAt": "2026-04-25T19:04:07.660Z",
+      "builtAt": "2026-04-26T06:18:18.587Z",
+      "continent": "Europe"
+    },
+    {
+      "ref": "relation:89652",
+      "label": "Dunărea · order2",
+      "file": "data/samples/danube-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.1,
+        "attempts": 6,
+        "curlMaxTimeS": 600,
+        "tileSizeDeg": 1.5,
+        "overpassTimeoutS": 360,
+        "waterwayPattern": "^(river|canal)$"
+      },
+      "tier": 2,
+      "builtAt": "2026-04-26T06:18:18.587Z",
+      "continent": "Europe"
+    },
+    {
+      "ref": "relation:89652",
+      "label": "Dunărea · order3",
+      "file": "data/samples/danube-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.1,
+        "attempts": 6,
+        "curlMaxTimeS": 600,
+        "tileSizeDeg": 1.5,
+        "overpassTimeoutS": 360,
+        "waterwayPattern": "^(river|canal)$"
+      },
+      "tier": 3,
+      "builtAt": "2026-04-26T06:18:18.587Z",
       "continent": "Europe"
     },
     {

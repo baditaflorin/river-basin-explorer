@@ -2,6 +2,246 @@
   "version": 1,
   "samples": [
     {
+      "ref": "relation:1075117",
+      "label": "Rhône · main",
+      "file": "data/samples/rhone-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 0,
+      "builtAt": "2026-04-26T06:35:04.655Z",
+      "continent": "Europe"
+    },
+    {
+      "ref": "relation:1075117",
+      "label": "Rhône · order1",
+      "file": "data/samples/rhone-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 1,
+      "builtAt": "2026-04-26T06:35:04.655Z",
+      "continent": "Europe"
+    },
+    {
+      "ref": "relation:1075117",
+      "label": "Rhône · order2",
+      "file": "data/samples/rhone-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 2,
+      "builtAt": "2026-04-26T06:35:04.655Z",
+      "continent": "Europe"
+    },
+    {
+      "ref": "relation:1075117",
+      "label": "Rhône · order3",
+      "file": "data/samples/rhone-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 3,
+      "builtAt": "2026-04-26T06:35:04.655Z",
+      "continent": "Europe"
+    },
+    {
+      "ref": "relation:1075117",
+      "label": "Rhône · order4",
+      "file": "data/samples/rhone-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 4,
+      "builtAt": "2026-04-26T06:35:04.655Z",
+      "continent": "Europe"
+    },
+    {
+      "ref": "relation:1083284",
+      "label": "Orinoco · main",
+      "file": "data/samples/orinoco-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 0,
+      "builtAt": "2026-04-26T06:22:57.647Z",
+      "continent": "South America"
+    },
+    {
+      "ref": "relation:1083284",
+      "label": "Orinoco · order1",
+      "file": "data/samples/orinoco-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 1,
+      "builtAt": "2026-04-26T06:22:57.647Z",
+      "continent": "South America"
+    },
+    {
+      "ref": "relation:1083284",
+      "label": "Orinoco · order2",
+      "file": "data/samples/orinoco-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 2,
+      "builtAt": "2026-04-26T06:22:57.647Z",
+      "continent": "South America"
+    },
+    {
+      "ref": "relation:1083284",
+      "label": "Orinoco · order3",
+      "file": "data/samples/orinoco-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 3,
+      "builtAt": "2026-04-26T06:22:57.647Z",
+      "continent": "South America"
+    },
+    {
+      "ref": "relation:1083284",
+      "label": "Orinoco · order4",
+      "file": "data/samples/orinoco-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 4,
+      "builtAt": "2026-04-26T06:22:57.647Z",
+      "continent": "South America"
+    },
+    {
+      "ref": "relation:1205528",
+      "label": "Volta · main",
+      "file": "data/samples/volta-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 0,
+      "builtAt": "2026-04-26T06:26:53.661Z",
+      "continent": "Africa"
+    },
+    {
+      "ref": "relation:1205528",
+      "label": "Volta · order1",
+      "file": "data/samples/volta-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 1,
+      "builtAt": "2026-04-26T06:26:53.661Z",
+      "continent": "Africa"
+    },
+    {
+      "ref": "relation:1205528",
+      "label": "Volta · order2",
+      "file": "data/samples/volta-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 2,
+      "builtAt": "2026-04-26T06:26:53.661Z",
+      "continent": "Africa"
+    },
+    {
+      "ref": "relation:1205528",
+      "label": "Volta · order3",
+      "file": "data/samples/volta-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 3,
+      "builtAt": "2026-04-26T06:26:53.661Z",
+      "continent": "Africa"
+    },
+    {
+      "ref": "relation:1205528",
+      "label": "Volta · order4",
+      "file": "data/samples/volta-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 4,
+      "builtAt": "2026-04-26T06:26:53.661Z",
+      "continent": "Africa"
+    },
+    {
       "ref": "relation:132818",
       "label": "Loire · main",
       "file": "data/samples/loire-main.json",
@@ -140,6 +380,166 @@
       "tier": 4,
       "builtAt": "2026-04-25T16:54:43.731Z",
       "continent": "Europe"
+    },
+    {
+      "ref": "relation:157425",
+      "label": "Darling · main",
+      "file": "data/samples/darling-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 0,
+      "builtAt": "2026-04-26T06:36:24.254Z",
+      "continent": "Oceania"
+    },
+    {
+      "ref": "relation:157425",
+      "label": "Darling · order1",
+      "file": "data/samples/darling-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 1,
+      "builtAt": "2026-04-26T06:36:24.254Z",
+      "continent": "Oceania"
+    },
+    {
+      "ref": "relation:157425",
+      "label": "Darling · order2",
+      "file": "data/samples/darling-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 2,
+      "builtAt": "2026-04-26T06:36:24.254Z",
+      "continent": "Oceania"
+    },
+    {
+      "ref": "relation:157425",
+      "label": "Darling · order3",
+      "file": "data/samples/darling-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 3,
+      "builtAt": "2026-04-26T06:36:24.254Z",
+      "continent": "Oceania"
+    },
+    {
+      "ref": "relation:157425",
+      "label": "Darling · order4",
+      "file": "data/samples/darling-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 4,
+      "builtAt": "2026-04-26T06:36:24.254Z",
+      "continent": "Oceania"
+    },
+    {
+      "ref": "relation:1984261",
+      "label": "Connecticut · main",
+      "file": "data/samples/connecticut-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 0,
+      "builtAt": "2026-04-26T06:19:56.061Z",
+      "continent": "North America"
+    },
+    {
+      "ref": "relation:1984261",
+      "label": "Connecticut · order1",
+      "file": "data/samples/connecticut-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 1,
+      "builtAt": "2026-04-26T06:19:56.061Z",
+      "continent": "North America"
+    },
+    {
+      "ref": "relation:1984261",
+      "label": "Connecticut · order2",
+      "file": "data/samples/connecticut-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 2,
+      "builtAt": "2026-04-26T06:19:56.061Z",
+      "continent": "North America"
+    },
+    {
+      "ref": "relation:1984261",
+      "label": "Connecticut · order3",
+      "file": "data/samples/connecticut-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 3,
+      "builtAt": "2026-04-26T06:19:56.061Z",
+      "continent": "North America"
+    },
+    {
+      "ref": "relation:1984261",
+      "label": "Connecticut · order4",
+      "file": "data/samples/connecticut-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 4,
+      "builtAt": "2026-04-26T06:19:56.061Z",
+      "continent": "North America"
     },
     {
       "ref": "relation:2140749",
@@ -422,6 +822,86 @@
       "continent": "North America"
     },
     {
+      "ref": "relation:2183784",
+      "label": "Pearl River · main",
+      "file": "data/samples/pearl-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 0,
+      "builtAt": "2026-04-26T06:23:51.115Z",
+      "continent": "Asia"
+    },
+    {
+      "ref": "relation:2183784",
+      "label": "Pearl River · order1",
+      "file": "data/samples/pearl-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 1,
+      "builtAt": "2026-04-26T06:23:51.115Z",
+      "continent": "Asia"
+    },
+    {
+      "ref": "relation:2183784",
+      "label": "Pearl River · order2",
+      "file": "data/samples/pearl-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 2,
+      "builtAt": "2026-04-26T06:23:51.115Z",
+      "continent": "Asia"
+    },
+    {
+      "ref": "relation:2183784",
+      "label": "Pearl River · order3",
+      "file": "data/samples/pearl-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 3,
+      "builtAt": "2026-04-26T06:23:51.115Z",
+      "continent": "Asia"
+    },
+    {
+      "ref": "relation:2183784",
+      "label": "Pearl River · order4",
+      "file": "data/samples/pearl-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 4,
+      "builtAt": "2026-04-26T06:23:51.115Z",
+      "continent": "Asia"
+    },
+    {
       "ref": "relation:2188548",
       "label": "Tigris · main",
       "file": "data/samples/tigris-main.json",
@@ -562,6 +1042,70 @@
       "continent": "Oceania"
     },
     {
+      "ref": "relation:2248461",
+      "label": "Orange River · main",
+      "file": "data/samples/orange-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 0,
+      "builtAt": "2026-04-26T06:31:07.995Z",
+      "continent": "Africa"
+    },
+    {
+      "ref": "relation:2248461",
+      "label": "Orange River · order1",
+      "file": "data/samples/orange-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 1,
+      "builtAt": "2026-04-26T06:31:07.995Z",
+      "continent": "Africa"
+    },
+    {
+      "ref": "relation:2248461",
+      "label": "Orange River · order2",
+      "file": "data/samples/orange-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 2,
+      "builtAt": "2026-04-26T06:31:07.995Z",
+      "continent": "Africa"
+    },
+    {
+      "ref": "relation:2248461",
+      "label": "Orange River · order3",
+      "file": "data/samples/orange-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 3,
+      "builtAt": "2026-04-26T06:31:07.995Z",
+      "continent": "Africa"
+    },
+    {
       "ref": "relation:2263653",
       "label": "Thames · main",
       "file": "data/samples/thames-main.json",
@@ -700,6 +1244,166 @@
       "tier": 4,
       "builtAt": "2026-04-25T17:40:26.720Z",
       "continent": "Asia"
+    },
+    {
+      "ref": "relation:231955",
+      "label": "Irrawaddy · main",
+      "file": "data/samples/irrawaddy-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 0,
+      "builtAt": "2026-04-26T06:26:19.872Z",
+      "continent": "Asia"
+    },
+    {
+      "ref": "relation:231955",
+      "label": "Irrawaddy · order1",
+      "file": "data/samples/irrawaddy-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 1,
+      "builtAt": "2026-04-26T06:26:19.872Z",
+      "continent": "Asia"
+    },
+    {
+      "ref": "relation:231955",
+      "label": "Irrawaddy · order2",
+      "file": "data/samples/irrawaddy-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 2,
+      "builtAt": "2026-04-26T06:26:19.872Z",
+      "continent": "Asia"
+    },
+    {
+      "ref": "relation:231955",
+      "label": "Irrawaddy · order3",
+      "file": "data/samples/irrawaddy-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 3,
+      "builtAt": "2026-04-26T06:26:19.872Z",
+      "continent": "Asia"
+    },
+    {
+      "ref": "relation:231955",
+      "label": "Irrawaddy · order4",
+      "file": "data/samples/irrawaddy-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 4,
+      "builtAt": "2026-04-26T06:26:19.872Z",
+      "continent": "Asia"
+    },
+    {
+      "ref": "relation:2723289",
+      "label": "Sacramento · main",
+      "file": "data/samples/sacramento-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 0,
+      "builtAt": "2026-04-26T06:19:00.799Z",
+      "continent": "North America"
+    },
+    {
+      "ref": "relation:2723289",
+      "label": "Sacramento · order1",
+      "file": "data/samples/sacramento-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 1,
+      "builtAt": "2026-04-26T06:19:00.799Z",
+      "continent": "North America"
+    },
+    {
+      "ref": "relation:2723289",
+      "label": "Sacramento · order2",
+      "file": "data/samples/sacramento-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 2,
+      "builtAt": "2026-04-26T06:19:00.799Z",
+      "continent": "North America"
+    },
+    {
+      "ref": "relation:2723289",
+      "label": "Sacramento · order3",
+      "file": "data/samples/sacramento-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 3,
+      "builtAt": "2026-04-26T06:19:00.799Z",
+      "continent": "North America"
+    },
+    {
+      "ref": "relation:2723289",
+      "label": "Sacramento · order4",
+      "file": "data/samples/sacramento-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 4,
+      "builtAt": "2026-04-26T06:19:00.799Z",
+      "continent": "North America"
     },
     {
       "ref": "relation:318455",
@@ -1262,6 +1966,86 @@
       "tier": 4,
       "builtAt": "2026-04-25T18:29:14.553Z",
       "continent": "Africa"
+    },
+    {
+      "ref": "way:368436368",
+      "label": "São Francisco · main",
+      "file": "data/samples/saofrancisco-main.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 0,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 0,
+      "builtAt": "2026-04-26T06:23:05.389Z",
+      "continent": "South America"
+    },
+    {
+      "ref": "way:368436368",
+      "label": "São Francisco · order1",
+      "file": "data/samples/saofrancisco-order1.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 1,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 1,
+      "builtAt": "2026-04-26T06:23:05.389Z",
+      "continent": "South America"
+    },
+    {
+      "ref": "way:368436368",
+      "label": "São Francisco · order2",
+      "file": "data/samples/saofrancisco-order2.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 2,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 2,
+      "builtAt": "2026-04-26T06:23:05.389Z",
+      "continent": "South America"
+    },
+    {
+      "ref": "way:368436368",
+      "label": "São Francisco · order3",
+      "file": "data/samples/saofrancisco-order3.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 3,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 3,
+      "builtAt": "2026-04-26T06:23:05.389Z",
+      "continent": "South America"
+    },
+    {
+      "ref": "way:368436368",
+      "label": "São Francisco · order4",
+      "file": "data/samples/saofrancisco-order4.json",
+      "options": {
+        "toleranceM": 900,
+        "maxOrder": 4,
+        "paddingDeg": 0.25,
+        "attempts": 6,
+        "curlMaxTimeS": 120,
+        "tileSizeDeg": 1
+      },
+      "tier": 4,
+      "builtAt": "2026-04-26T06:23:05.389Z",
+      "continent": "South America"
     },
     {
       "ref": "way:466629731",

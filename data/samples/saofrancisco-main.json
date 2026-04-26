@@ -1,0 +1,263 @@
+{
+  "version": 1,
+  "ref": "way:368436368",
+  "label": "São Francisco · main",
+  "candidate": {
+    "osmType": "way",
+    "id": 368436368,
+    "name": "São Francisco",
+    "localName": "São Francisco, Sítio do Mato, Região Geográfica Imediata de Bom Jesus da Lapa, Bahia, Região Nordeste, Brasil, Região Geográfica Intermediária de Guanambi",
+    "wikidata": "",
+    "wikipedia": "",
+    "center": [
+      -13.09052,
+      -43.4621105
+    ],
+    "tags": {}
+  },
+  "mainWaterways": [
+    {
+      "id": 368436368,
+      "osmType": "way",
+      "relationId": null,
+      "name": "São Francisco",
+      "waterway": "river",
+      "wikidata": "",
+      "points": [
+        [
+          -13.1319013,
+          -43.4638879
+        ],
+        [
+          -13.1285824,
+          -43.4647432
+        ],
+        [
+          -13.1251135,
+          -43.4644857
+        ],
+        [
+          -13.1185726,
+          -43.4637347
+        ],
+        [
+          -13.1153543,
+          -43.4636489
+        ],
+        [
+          -13.1077264,
+          -43.4627691
+        ],
+        [
+          -13.1023554,
+          -43.4623399
+        ],
+        [
+          -13.097465,
+          -43.4619966
+        ],
+        [
+          -13.0933687,
+          -43.4618679
+        ],
+        [
+          -13.0888334,
+          -43.4622541
+        ],
+        [
+          -13.086597,
+          -43.4622326
+        ],
+        [
+          -13.0841517,
+          -43.4621468
+        ],
+        [
+          -13.0809748,
+          -43.4627905
+        ],
+        [
+          -13.0792191,
+          -43.4637991
+        ],
+        [
+          -13.0773798,
+          -43.4644857
+        ],
+        [
+          -13.0756241,
+          -43.4648719
+        ],
+        [
+          -13.0712975,
+          -43.465108
+        ],
+        [
+          -13.068204,
+          -43.4648934
+        ],
+        [
+          -13.0660511,
+          -43.4642711
+        ],
+        [
+          -13.0637937,
+          -43.4631339
+        ],
+        [
+          -13.05977,
+          -43.4622541
+        ],
+        [
+          -13.0575856,
+          -43.4614172
+        ],
+        [
+          -13.0507956,
+          -43.4580668
+        ]
+      ],
+      "tags": {
+        "name": "São Francisco",
+        "waterway": "river"
+      }
+    }
+  ],
+  "elevationProfile": [
+    {
+      "index": 0,
+      "fraction": 0,
+      "distanceKm": 0,
+      "point": [
+        -13.1319013,
+        -43.4638879
+      ],
+      "elevationM": 424,
+      "dataset": "aster30m"
+    },
+    {
+      "index": 1,
+      "fraction": 0.1111111111111111,
+      "distanceKm": 1.0274963519505904,
+      "point": [
+        -13.122787278127271,
+        -43.46421861250035
+      ],
+      "elevationM": 424,
+      "dataset": "aster30m"
+    },
+    {
+      "index": 2,
+      "fraction": 0.2222222222222222,
+      "distanceKm": 2.054992703901181,
+      "point": [
+        -13.11358525936162,
+        -43.46344485931336
+      ],
+      "elevationM": 424,
+      "dataset": "aster30m"
+    },
+    {
+      "index": 3,
+      "fraction": 0.3333333333333333,
+      "distanceKm": 3.082489055851771,
+      "point": [
+        -13.104391696902612,
+        -43.46250262177073
+      ],
+      "elevationM": 424,
+      "dataset": "aster30m"
+    },
+    {
+      "index": 4,
+      "fraction": 0.4444444444444444,
+      "distanceKm": 4.109985407802362,
+      "point": [
+        -13.095169849950627,
+        -43.461924489604925
+      ],
+      "elevationM": 424,
+      "dataset": "aster30m"
+    },
+    {
+      "index": 5,
+      "fraction": 0.5555555555555556,
+      "distanceKm": 5.137481759752952,
+      "point": [
+        -13.085946247362882,
+        -43.462209766574134
+      ],
+      "elevationM": 424,
+      "dataset": "aster30m"
+    },
+    {
+      "index": 6,
+      "fraction": 0.6666666666666666,
+      "distanceKm": 6.164978111703542,
+      "point": [
+        -13.077147349888124,
+        -43.46453683187515
+      ],
+      "elevationM": 424,
+      "dataset": "aster30m"
+    },
+    {
+      "index": 7,
+      "fraction": 0.7777777777777778,
+      "distanceKm": 7.192474463654134,
+      "point": [
+        -13.067963924653936,
+        -43.464824005746735
+      ],
+      "elevationM": 424,
+      "dataset": "aster30m"
+    },
+    {
+      "index": 8,
+      "fraction": 0.8888888888888888,
+      "distanceKm": 8.219970815604723,
+      "point": [
+        -13.05918466137097,
+        -43.46202984166882
+      ],
+      "elevationM": 424,
+      "dataset": "aster30m"
+    },
+    {
+      "index": 9,
+      "fraction": 1,
+      "distanceKm": 9.247467167555314,
+      "point": [
+        -13.0507956,
+        -43.4580668
+      ],
+      "elevationM": 423,
+      "dataset": "aster30m"
+    }
+  ],
+  "classification": {
+    "direct": [],
+    "descendants": [],
+    "stats": {
+      "directCount": 0,
+      "descendantCount": 0,
+      "waterwayCount": 0,
+      "directKm": 0,
+      "descendantKm": 0,
+      "totalKm": 0
+    }
+  },
+  "loadedCount": 1,
+  "options": {
+    "toleranceM": 900,
+    "maxOrder": 0,
+    "paddingDeg": 0.25,
+    "attempts": 6,
+    "curlMaxTimeS": 120,
+    "tileSizeDeg": 1
+  },
+  "tier": 0,
+  "builtAt": "2026-04-26T06:23:05.389Z",
+  "sourceLabel": "repo sample",
+  "continent": "South America"
+}
